@@ -1,22 +1,38 @@
-import { LOGIN_ROUTE, MAIN_PAGE, SETTINGS_PAGE } from './utils/consts';
-import Login from './pages/Login';
-import MainPage from './pages/MainPage';
-import Settings from './pages/Settings';
+import {
+  BRIGADES_PAGE,
+  LOGIN_ROUTE,
+  MAIN_PAGE,
+  SETTINGS_PAGE,
+  USER_SETTINGS_PAGE,
+} from './utils/consts';
+import LoginPage from './pages/LoginPage';
+import ProjectPage from './pages/ProjectPage';
+import SettingsPage from './pages/SettingsPage';
+import UserSettingPage from './pages/UserSettingPage';
+import BrigadesPage from './pages/BrigadesPage';
 
 export const authRoutes = [
   {
     path: SETTINGS_PAGE,
-    Component: Settings,
+    Component: SettingsPage,
+  },
+  {
+    path: USER_SETTINGS_PAGE,
+    Component: UserSettingPage,
+  },
+  {
+    path: BRIGADES_PAGE,
+    Component: BrigadesPage,
+  },
+  {
+    path: MAIN_PAGE,
+    Component: ProjectPage,
   },
 ];
 
 export const publicRoutes = [
   {
     path: LOGIN_ROUTE,
-    Component: Login,
-  },
-  {
-    path: MAIN_PAGE,
-    Component: MainPage,
+    Component: LoginPage,
   },
 ];

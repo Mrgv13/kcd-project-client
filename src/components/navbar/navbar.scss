@@ -1,0 +1,53 @@
+@import "./src/style/variables";
+
+.navbar {
+  width: 100vw;
+  height: 75px;
+  display: grid;
+  grid-template-columns: 50px auto 200px;
+  justify-items: start;
+  align-items: center;
+  column-gap: 25px;
+  background: #FFFFFF;
+  border-bottom: 2px solid #E5E5E5;
+
+  .svg_icons *:hover{
+    stroke: #6200EE;
+  }
+  .navbar__menu__bottom{
+    margin-left: 14px;
+  }
+
+  .navbar__button{
+    button{
+      font-family: $font-roboto-400;
+      font-size: 32px;
+      font-weight: bold;
+      text-align: center;
+      width: auto;
+      height: 75px;
+      margin-right: 60px;
+      background: #FFFFFF;
+      border: none;
+      border-bottom: 2px solid #E5E5E5;
+    }
+    :hover{
+      border-bottom: solid 2px rgba(98, 0, 238, 0.62);
+      color: rgba(98, 0, 238, 0.62);
+    }
+    :active{
+           border-bottom: solid 2px #6200EE;
+           color: #6200EE;
+         }
+
+  }
+
+  .settings{
+    display: grid;
+    grid-template-columns: repeat(3, 50px);
+    font-family: $font-roboto-400;
+   a:hover{
+    color: #6200EE;
+       }
+  }
+}
