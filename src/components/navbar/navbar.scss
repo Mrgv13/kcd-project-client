@@ -4,16 +4,19 @@
   width: 100vw;
   height: 75px;
   display: grid;
-  grid-template-columns: 50px auto 200px;
+  grid-template-columns: 50px auto 100px;
   justify-items: start;
   align-items: center;
   column-gap: 25px;
   background: #FFFFFF;
   border-bottom: 2px solid #E5E5E5;
+  position: fixed;
 
-  .svg_icons *:hover{
+  .svg__icons *:hover{
     stroke: #6200EE;
+    cursor: pointer;
   }
+
   .navbar__menu__bottom{
     margin-left: 14px;
   }
@@ -34,6 +37,7 @@
     :hover{
       border-bottom: solid 2px rgba(98, 0, 238, 0.62);
       color: rgba(98, 0, 238, 0.62);
+      cursor: pointer;
     }
     :active{
            border-bottom: solid 2px #6200EE;
@@ -47,7 +51,8 @@
     grid-template-columns: repeat(3, 50px);
     font-family: $font-roboto-400;
    a:hover{
-    color: #6200EE;
+     color: #6200EE;
+     cursor: pointer;
        }
   }
 }

@@ -3,3 +3,4 @@ export const MAIN_PAGE = '/main';
 export const SETTINGS_PAGE = '/setting';
 export const USER_SETTINGS_PAGE = '/user';
 export const BRIGADES_PAGE = '/brigades';
+export const ERROR_PAGE = '/err';

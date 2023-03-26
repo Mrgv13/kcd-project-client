@@ -1,45 +1,62 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { userChangeAuth } from '../../store/appSlice';
+
 import {
   BRIGADES_PAGE,
-  LOGIN_ROUTE,
   MAIN_PAGE,
   SETTINGS_PAGE,
   USER_SETTINGS_PAGE,
-} from '../../utils/consts';
+} from '../../utils/constsRoutesPages';
 import './navbar.scss';
 import ButtonMain from '../button/ButtonMain';
-import { ReactComponent as Menu } from '../../utils/icons/menu-button.svg';
-import { ReactComponent as Settings } from '../../utils/icons/settings.svg';
-import { ReactComponent as UserSettings } from '../../utils/icons/user-profile-circle.svg';
+import Menu from '../menu/Menu';
+import { MenuButtom, Settings, UserSettings } from '../../utils/icons/asf';
 
 const NavBar = () => {
   const auth = useSelector((state) => state.auth.auth[0].type);
-
-  const dispatch = useDispatch();
+  const [menuActive, setMenuActive] = useState(false);
   const navigate = useNavigate();
+
+  // mocking
+
+  const items = [
+    { value: 'Календарный график', href: '/cg' },
+    { value: 'Работы', href: '/work' },
+    { value: 'Загрузка документов', href: '/load_doc' },
+    { value: 'Форм док', href: '/form_doc' },
+  ];
+
+  //
+
   return (
     <div className="navbar">
       <div className="navbar__menu__bottom">
-        <Menu className="svg_icons" />
+        <div className="svg__icons" onClick={() => setMenuActive(!menuActive)}>
+          <MenuButtom stroke={'black'} />
+        </div>
       </div>
       <div className="navbar__button">
         {auth ? <ButtonMain text={'ПРОЕКТЫ'} onClick={() => navigate(MAIN_PAGE)} /> : <></>}
         {auth ? <ButtonMain text={'БРИГАДЫ'} onClick={() => navigate(BRIGADES_PAGE)} /> : <></>}
       </div>
       <div className="settings">
-        {auth ? <Settings className="svg_icons" onClick={() => navigate(SETTINGS_PAGE)} /> : <></>}
         {auth ? (
-          <UserSettings className="svg_icons" onClick={() => navigate(USER_SETTINGS_PAGE)} />
+          <div className="svg__icons">
+            <Settings stroke={'black'} onClick={() => navigate(SETTINGS_PAGE)} />
+          </div>
         ) : (
           <></>
         )}
-        <a onClick={auth ? () => dispatch(userChangeAuth()) : () => navigate(LOGIN_ROUTE)}>
-          {auth ? 'Выйти' : 'Войти'}
-        </a>
+        {auth ? (
+          <div className="svg__icons">
+            <UserSettings stroke={'black'} onClick={() => navigate(USER_SETTINGS_PAGE)} />
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
+      <Menu items={items} menuActive={menuActive} setMenuActive={setMenuActive} />
     </div>
   );
 };

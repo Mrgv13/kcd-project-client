@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { userChangeAuth } from '../store/appSlice';
-import '../style/login.scss';
+import '../style/login-page.scss';
+import { useNavigate } from 'react-router-dom';
+import { MAIN_PAGE } from '../utils/constsRoutesPages';
 
 const LoginPage = () => {
   const dispatch = useDispatch();
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
   return (
     <div className="login__style">
       <div className="login__form">
@@ -26,7 +29,13 @@ const LoginPage = () => {
             onChange={(e) => setPassword(() => e.target.value)}
           />
         </div>
-        <button onClick={() => dispatch(userChangeAuth())}>Войти</button>
+        <button
+          onClick={() => {
+            dispatch(userChangeAuth());
+            navigate(MAIN_PAGE);
+          }}>
+          Войти
+        </button>
       </div>
     </div>
   );
