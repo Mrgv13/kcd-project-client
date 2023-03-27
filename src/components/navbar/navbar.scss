@@ -12,17 +12,17 @@
   border-bottom: 2px solid #E5E5E5;
   position: fixed;
 
-  .svg__icons *:hover{
+  .svg__icons *:hover {
     stroke: #6200EE;
     cursor: pointer;
   }
 
-  .navbar__menu__bottom{
+  .navbar__menu__bottom {
     margin-left: 14px;
   }
 
-  .navbar__button{
-    button{
+  .navbar__button {
+    button {
       font-family: $font-roboto-400;
       font-size: 32px;
       font-weight: bold;
@@ -34,25 +34,28 @@
       border: none;
       border-bottom: 2px solid #E5E5E5;
     }
-    :hover{
-      border-bottom: solid 2px rgba(98, 0, 238, 0.62);
-      color: rgba(98, 0, 238, 0.62);
+
+    :hover {
+      border-bottom: solid 2px #6200EE;
+      color: #6200EE;
       cursor: pointer;
     }
-    :active{
-           border-bottom: solid 2px #6200EE;
-           color: #6200EE;
-         }
+
+    :active {
+      border-bottom: solid 2px #6200EE;
+      color: #6200EE;
+    }
 
   }
 
-  .settings{
+  .settings {
     display: grid;
     grid-template-columns: repeat(3, 50px);
     font-family: $font-roboto-400;
-   a:hover{
-     color: #6200EE;
-     cursor: pointer;
-       }
+
+    a:hover {
+      color: #6200EE;
+      cursor: pointer;
+    }
   }
 }

@@ -1,17 +1,31 @@
+import ProjectsList from '../components/project-page-components/projects-list/ProjectsList';
+
 import React from 'react';
-import '../style/project-page.scss';
-import ProjectCard from '../components/project-card/ProjectCard';
+
+// mocking
+
+const projects = [
+  {
+    id: 1,
+    worksName: 'Project 1',
+  },
+  {
+    id: 2,
+    worksName: 'Project 1',
+  },
+  {
+    id: 3,
+    worksName: 'Project 1',
+  },
+];
+
+//
 
 const ProjectPage = () => {
   return (
-    <div className="project">
-      <div className="text">ВАША РАБОТА</div>
-      <div className="project__recent">
-        <ProjectCard text={'CARD 1'} />
-        <ProjectCard text={'CARD 2'} />
-        <ProjectCard text={'CARD 3'} />
-      </div>
-    </div>
+    <>
+      <ProjectsList projects={projects} />
+    </>
   );
 };
 

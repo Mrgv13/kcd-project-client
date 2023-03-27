@@ -1,22 +1,26 @@
-@import "variables";
+@import "../../../style/variables";
 
-.project{
+.project {
   font-family: $font-roboto-400;
   font-weight: bold;
   font-size: 36px;
   padding-top: 75px;
 
-  .text{
+  .text {
     height: 100px;
     width: 100vh;
     padding-left: 50px;
     display: grid;
     align-items: center;
+    cursor: default;
   }
 
-  .project__recent{
+  .project__recent {
     background: #F5F5F5;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    padding: 50px;
+    gap: 100px;
+    justify-content: flex-start;
   }
 }

@@ -1,6 +1,8 @@
 import AppRouter from './components/AppRouter';
-import { BrowserRouter } from 'react-router-dom';
+
 import NavBar from './components/navbar/NavBar';
+
+import { BrowserRouter } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 function App() {

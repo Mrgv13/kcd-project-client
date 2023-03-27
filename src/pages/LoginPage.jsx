@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { userChangeAuth } from '../store/appSlice';
 import '../style/login-page.scss';
+import { MAIN_PAGE } from '../routes/consts/pagesRoutes';
+
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { MAIN_PAGE } from '../utils/constsRoutesPages';
 
 const LoginPage = () => {
   const dispatch = useDispatch();
