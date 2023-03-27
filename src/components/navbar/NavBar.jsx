@@ -6,7 +6,7 @@ import { changeRoutes } from '../../store/menuSlice';
 import './navbar.scss';
 import ButtonMain from '../button/ButtonMain';
 import Menu from '../menu/Menu';
-import { MenuButtom, Settings, UserSettings } from '../../utils/icons/asf';
+import { MenuButtom, Settings, UserSettings } from '../../utils/icons/exportIcons';
 
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
