@@ -16,7 +16,6 @@ import { useNavigate } from 'react-router-dom';
 const NavBar = () => {
   const auth = useSelector((state) => state.auth.auth[0].type);
   const menu = useSelector((state) => state.menu.menu[0].menuAttribute);
-  // TODO menu - ВЫДАЕТ ОШИБКУ. НУЖНО ПЕРЕПИСАТЬ, ТАК КАК ПЕРЕЗАПИСЫВАЕТСЯ ВМЕСТЕ С КОМПОНЕНТОМ
   const dispatch = useDispatch();
   const [menuActive, setMenuActive] = useState(false);
   const navigate = useNavigate();

@@ -1,6 +1,8 @@
-import { CALENDAR_CHART_ROUTE, DOCUMENTS_ROUTE, WORKS_ROUTE } from '../routes/consts/projectRoutes';
+import {CALENDAR_CHART_ROUTE, DOCUMENTS_ROUTE, WORKS_ROUTE} from '../routes/consts/projectRoutes';
 
-import { createSlice } from '@reduxjs/toolkit';
+import {createSlice} from '@reduxjs/toolkit';
+import {Component} from 'react';
+import {json} from 'react-router-dom';
 
 const menuSlice = createSlice({
   name: 'menu',
@@ -9,10 +11,9 @@ const menuSlice = createSlice({
       {
         id: '1',
         menuAttribute: [
-          { name: 'Календарный график', path: CALENDAR_CHART_ROUTE },
-          { name: 'Работы', path: WORKS_ROUTE },
-          { name: 'Загрузка документов', path: DOCUMENTS_ROUTE },
-          { name: 'Форм док', path: DOCUMENTS_ROUTE },
+          {name: 'Календарный график', path: CALENDAR_CHART_ROUTE},
+          {name: 'Работы', path: WORKS_ROUTE},
+          {name: 'Загрузка документов', path: DOCUMENTS_ROUTE},
         ],
       },
     ],
@@ -20,10 +21,16 @@ const menuSlice = createSlice({
   reducers: {
     changeRoutes(state, action) {
       const menu = state.menu.find((action) => action.id === '1');
-      menu.menuAttribute = action.payload;
+      const data = action.payload;
+
+      data.forEach((obj) =>
+        delete obj['Component']
+      );
+
+      menu.menuAttribute = data;
     },
   },
 });
 
-export const { changeRoutes } = menuSlice.actions;
+export const {changeRoutes} = menuSlice.actions;
 export default menuSlice.reducer;
