@@ -7,17 +7,17 @@ import React from 'react'
 const projects = [
   {
     id: 1,
-    worksName: 'Бригада 1',
+    worksName: 'Проект 1',
     worksAttributes: ['Детали', 'Сроки', 'Ресурсы'],
   },
   {
     id: 2,
-    worksName: 'Бригада 2',
+    worksName: 'Проект 2',
     worksAttributes: ['Детали', 'Сроки', 'Ресурсы'],
   },
   {
     id: 3,
-    worksName: 'Бригада 3',
+    worksName: 'Проект 3',
     worksAttributes: ['Детали', 'Сроки', 'Ресурсы'],
   },
 ]

@@ -5,7 +5,7 @@ import {
 } from './consts/projectRoutes'
 
 import Calendar from '../app/components/calendar/Calendar'
-import WorksList from '../app/components/works-list/WorksList'
+import WorksList from '../app/pages/works/WorksList'
 import Documents from '../app/components/documents/Documents'
 
 export const projectRoutes = [
