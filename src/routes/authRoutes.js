@@ -1,11 +1,15 @@
-import { MAIN_PAGE, SETTINGS_PAGE, USER_SETTINGS_PAGE } from './consts/pagesRoutes';
-import { projectRoutes } from './projectRoutes';
+import {
+  MAIN_PAGE,
+  SETTINGS_PAGE,
+  USER_SETTINGS_PAGE,
+} from './consts/pagesRoutes'
+import { projectRoutes } from './projectRoutes'
 
-import { brigadesRoutes } from './brigadesRoutes';
+import { brigadesRoutes } from './brigadesRoutes'
 
-import SettingsPage from '../pages/SettingsPage';
-import UserSettingPage from '../pages/UserSettingPage';
-import ProjectPage from '../pages/ProjectPage';
+import SettingsPage from '../app/pages/settings/SettingsPage'
+import UserSettingPage from '../app/pages/settings/UserSettingPage'
+import ProjectPage from '../app/pages/project/ProjectPage'
 
 export const authRoutes = [
   {
@@ -25,4 +29,4 @@ export const authRoutes = [
   },
   ...projectRoutes.map((el) => el),
   ...brigadesRoutes.map((el) => el),
-];
+]

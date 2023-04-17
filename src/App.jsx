@@ -1,6 +1,6 @@
-import AppRouter from './components/AppRouter'
+import AppRouter from './app/AppRouter'
 
-import NavBar from './components/navbar/NavBar'
+import NavBar from './app/components/navbar/NavBar'
 
 import { BrowserRouter } from 'react-router-dom'
 import { useSelector } from 'react-redux'

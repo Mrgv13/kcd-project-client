@@ -1,7 +1,7 @@
-import { ERROR_PAGE, LOGIN_ROUTE } from './consts/pagesRoutes';
+import { ERROR_PAGE, LOGIN_ROUTE } from './consts/pagesRoutes'
 
-import LoginPage from '../pages/LoginPage';
-import ErrorPage from '../pages/ErrorPage';
+import LoginPage from '../app/pages/login/LoginPage'
+import ErrorPage from '../app/pages/error/ErrorPage'
 
 export const publicRoutes = [
   {
@@ -12,4 +12,4 @@ export const publicRoutes = [
     path: ERROR_PAGE,
     Component: ErrorPage,
   },
-];
+]

@@ -1,0 +1,46 @@
+@import "../../../../style/variables";
+
+.project__card {
+  height: 250px;
+  width: 400px;
+  display: grid;
+  grid-template-columns: 30px 100%;
+  grid-template-rows: 100%;
+  background: #FFFFFF;
+  cursor: pointer;
+
+  .color__row {
+    background: tomato;
+  }
+
+  .project__name {
+    font-size: 32px;
+    text-align: center;
+    border-bottom: solid 2px;
+    width: 370px;
+  }
+
+  .project__attributes {
+    padding-left: 50px;
+    font-size: 24px;
+    width: 370px;
+
+    ul {
+      height: 105px;
+      list-style: none;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      padding: 0;
+
+      li {
+
+      }
+    }
+  }
+
+  .last__active {
+    font-size: 24px;
+    padding-left: 50px;
+    width: 370px;
+  }
+}

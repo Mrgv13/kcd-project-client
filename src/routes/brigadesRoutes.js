@@ -1,6 +1,6 @@
-import { BRIGADES_PAGE } from './consts/brigadesRoutes';
+import { BRIGADES_PAGE } from './consts/brigadesRoutes'
 
-import BrigadesList from '../components/brigades-page-components/BrigadesList';
+import BrigadesList from '../app/pages/brigades/BrigadesList'
 
 export const brigadesRoutes = [
   {
@@ -8,4 +8,4 @@ export const brigadesRoutes = [
     Component: BrigadesList,
     name: 'TEST',
   },
-];
+]

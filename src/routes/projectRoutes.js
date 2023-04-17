@@ -1,8 +1,12 @@
-import { CALENDAR_CHART_ROUTE, DOCUMENTS_ROUTE, WORKS_ROUTE } from './consts/projectRoutes';
+import {
+  CALENDAR_CHART_ROUTE,
+  DOCUMENTS_ROUTE,
+  WORKS_ROUTE,
+} from './consts/projectRoutes'
 
-import Calendar from '../components/project-page-components/calendar/Calendar';
-import WorksList from '../components/project-page-components/works-list/WorksList';
-import Documents from '../components/project-page-components/documents/Documents';
+import Calendar from '../app/components/calendar/Calendar'
+import WorksList from '../app/components/works-list/WorksList'
+import Documents from '../app/components/documents/Documents'
 
 export const projectRoutes = [
   {
@@ -20,4 +24,4 @@ export const projectRoutes = [
     Component: Documents,
     name: 'Загрузка документов',
   },
-];
+]
