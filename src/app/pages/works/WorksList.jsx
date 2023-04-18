@@ -1,8 +1,11 @@
 import ItemCard from '../../components/cards-list/card-item/ItemCard'
 
-import React from 'react'
+import Modal from '../../components/modal/Modal'
+
+import React, { useState } from 'react'
 
 const WorksList = () => {
+  const [modalActive, setModalActive] = useState(false)
   const projects = [
     {
       id: 1,
@@ -39,18 +42,22 @@ const WorksList = () => {
   ]
 
   return (
-    <div className="project">
-      <div className="text">Работы</div>
-      <div className="project__recent">
-        {projects.map((project) => (
-          <ItemCard
-            key={project.id}
-            worksName={project.worksName}
-            worksAttributes={project.worksAttributes}
-          />
-        ))}
+    <>
+      <div className="project">
+        <div className="text">Работы</div>
+        <div className="project__recent">
+          {projects.map((project) => (
+            <ItemCard
+              key={project.id}
+              worksName={project.worksName}
+              worksAttributes={project.worksAttributes}
+              onClick={() => setModalActive(true)}
+            />
+          ))}
+        </div>
       </div>
-    </div>
+      <Modal active={modalActive} setActive={setModalActive}></Modal>
+    </>
   )
 }
 
