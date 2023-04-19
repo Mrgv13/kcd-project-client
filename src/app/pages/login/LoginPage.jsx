@@ -1,5 +1,5 @@
 import { userChangeAuth } from '../../../store/appSlice'
-import '../../../style/login-page.scss'
+import './login-page.scss'
 import { MAIN_PAGE } from '../../../routes/consts/pagesRoutes'
 
 import React, { useState } from 'react'

@@ -1,0 +1,38 @@
+@import "src/style/variables";
+
+.setting__page__style {
+  padding-top: 75px;
+  padding-left: 30vh;
+  width: 100vw;
+  height: 100vh;
+  font-family: $font-roboto-400;
+  font-size: 24px;
+  display: grid;
+
+  .child {
+    display: grid;
+
+
+    button {
+      background: #F6F6F6;
+      border: none;
+      padding: 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      height: 60px;
+      width: 160px;
+      font-weight: normal;
+      font-size: medium;
+    }
+
+    button:active {
+      background: #d9d8d8;
+
+    }
+  }
+
+  span {
+    font-size: 32px;
+    font-weight: bold;
+  }
+}

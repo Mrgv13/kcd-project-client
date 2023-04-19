@@ -1,4 +1,4 @@
-import '../../../style/brigade-page.scss'
+import './brigade-page.scss'
 
 import ItemCard from '../../components/cards-list/card-item/ItemCard'
 

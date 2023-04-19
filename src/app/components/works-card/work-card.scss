@@ -49,7 +49,6 @@
     border-bottom: black 1px solid;
     padding-bottom: 30px;
 
-
     .name {
       grid-area: A;
       justify-self: start;
@@ -60,7 +59,6 @@
     .status {
       @include status;
     }
-
 
     .date {
       grid-area: B;

@@ -1,6 +1,7 @@
 import {
   CALENDAR_CHART_ROUTE,
   DOCUMENTS_ROUTE,
+  PROGRESS_WORK,
   WORKS_ROUTE,
 } from '../routes/consts/projectRoutes'
 
@@ -16,6 +17,7 @@ const menuSlice = createSlice({
           { name: 'Календарный график', path: CALENDAR_CHART_ROUTE },
           { name: 'Работы', path: WORKS_ROUTE },
           { name: 'Загрузка документов', path: DOCUMENTS_ROUTE },
+          { name: 'Прогресс работ', path: PROGRESS_WORK },
         ],
       },
     ],
