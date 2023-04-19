@@ -1,0 +1,104 @@
+@import "../../../style/variables";
+
+@mixin status {
+  grid-area: B;
+  justify-self: end;
+  align-self: center;
+  font-size: 16px;
+
+  .oval {
+    height: 30px;
+    min-width: 50px;
+    border-radius: 25px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    color: white;
+  }
+
+  .red {
+    background-color: #B00020;
+  }
+
+  .green {
+    background-color: #7BD079;
+  }
+}
+
+.work__card {
+  font-family: $font-roboto-400;
+  max-height: 80vh;
+  overflow: auto;
+  padding: 25px;
+
+
+  .work__name {
+    text-align: center;
+    border-bottom: black 1px solid;
+    padding-bottom: 15px;
+    font-size: 24px;
+  }
+
+  .work__attributes {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-areas: "A B";
+    margin: 30px 0 30px 0;
+    border-bottom: black 1px solid;
+    padding-bottom: 30px;
+
+
+    .name {
+      grid-area: A;
+      justify-self: start;
+      align-self: center;
+      font-size: 24px;
+    }
+
+    .status {
+      @include status;
+    }
+
+
+    .date {
+      grid-area: B;
+      justify-self: end;
+      align-self: center;
+      font-size: 16px;
+    }
+
+    .works__include {
+      grid-area: B;
+      justify-self: end;
+      align-self: center;
+      font-size: 16px;
+      display: grid;
+
+      .work__include__item {
+        display: grid;
+        grid-template-areas: "A B";
+        gap: 10vh;
+
+        .name {
+          grid-area: A;
+          justify-self: start;
+          align-self: center;
+          font-size: 24px;
+        }
+
+        .oval {
+          grid-area: B;
+          justify-self: end;
+          align-self: center;
+        }
+
+      }
+
+      @include status;
+
+    }
+
+  }
+}

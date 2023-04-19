@@ -2,44 +2,23 @@ import ItemCard from '../../components/cards-list/card-item/ItemCard'
 
 import Modal from '../../components/modal/Modal'
 
+import { workChangeID } from '../../../store/worksSlice'
+
+import WorkCard from '../../components/works-card/WorkCard'
+
+import { projects, works } from '../../../mock'
+
+import { useDispatch, useSelector } from 'react-redux'
 import React, { useState } from 'react'
 
 const WorksList = () => {
   const [modalActive, setModalActive] = useState(false)
-  const projects = [
-    {
-      id: 1,
-      worksName: 'Подготовительные работы',
-      worksAttributes: [
-        'Заключение договора',
-        'Выплата аванса',
-        'Перебазировка компании',
-        'Передача объекта и документов',
-      ],
-    },
-    {
-      id: 2,
-      worksName: 'Бригада 2',
-      worksAttributes: [
-        'Иванов И. И.',
-        'Иванов И. И.',
-        'Иванов И. И.',
-        'Иванов И. И.',
-        'Иванов И. И.',
-      ],
-    },
-    {
-      id: 3,
-      worksName: 'Бригада 3',
-      worksAttributes: [
-        'Иванов И. И.',
-        'Иванов И. И.',
-        'Иванов И. И.',
-        'Иванов И. И.',
-        'Иванов И. И.',
-      ],
-    },
-  ]
+  const workID = useSelector((state) => state.work.work[0].id)
+  const dispatch = useDispatch()
+
+  // useEffect(() => {
+  //   console.log(workID);
+  // }, [workID]);
 
   return (
     <>
@@ -47,16 +26,30 @@ const WorksList = () => {
         <div className="text">Работы</div>
         <div className="project__recent">
           {projects.map((project) => (
-            <ItemCard
+            <div
               key={project.id}
-              worksName={project.worksName}
-              worksAttributes={project.worksAttributes}
-              onClick={() => setModalActive(true)}
-            />
+              onClick={() => {
+                dispatch(workChangeID(project.id))
+              }}>
+              <ItemCard
+                key={project.id}
+                worksName={project.worksName}
+                worksAttributes={project.worksAttributes}
+                functional={() => setModalActive(true)}
+              />
+            </div>
           ))}
         </div>
       </div>
-      <Modal active={modalActive} setActive={setModalActive}></Modal>
+      <Modal active={modalActive} setActive={setModalActive}>
+        {!!workID && (
+          <WorkCard
+            name={works.worksName}
+            worksAttributes={works.worksAttributes}
+          />
+        )}
+        {/*TODO запрос перечня работ по id*/}
+      </Modal>
     </>
   )
 }
