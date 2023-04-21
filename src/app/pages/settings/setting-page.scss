@@ -11,24 +11,6 @@
 
   .child {
     display: grid;
-
-
-    button {
-      background: #F6F6F6;
-      border: none;
-      padding: 15px;
-      border-radius: 6px;
-      cursor: pointer;
-      height: 60px;
-      width: 160px;
-      font-weight: normal;
-      font-size: medium;
-    }
-
-    button:active {
-      background: #d9d8d8;
-
-    }
   }
 
   span {

@@ -1,12 +1,12 @@
 import React from 'react'
 
-const ProgressBar = ({ bgcolor, completed }) => {
+const ProgressBar = ({ bgcolor, textColor, fontSize, completed }) => {
   const containerStyles = {
-    height: 20,
+    height: 25,
     width: '100%',
     backgroundColor: '#ffffff',
     borderRadius: 50,
-    margin: 50,
+    //margin: 50,
   }
 
   const fillerStyles = {
@@ -19,8 +19,9 @@ const ProgressBar = ({ bgcolor, completed }) => {
 
   const labelStyles = {
     padding: 5,
-    color: 'white',
+    color: textColor || 'white',
     fontWeight: 'bold',
+    fontSize: fontSize,
   }
 
   return (

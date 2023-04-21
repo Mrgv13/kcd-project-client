@@ -11,17 +11,29 @@ const SettingsPage = () => {
         <span>Email адрес</span>
         Ваш адрес электронной почты - {`test@mail.ru`}
         {/*TODO Сделать почту*/}
-        <ButtonMain text={'Сменить почту'} onClick={() => {}} />
+        <ButtonMain
+          styleComponent="default"
+          text={'Сменить почту'}
+          onClick={() => {}}
+        />
       </div>
       <div className="child">
         <span>Пароль</span>
         Запрос на смену пароля будет направлен на ваш email
-        <ButtonMain text={'Сменить пароль'} onClick={() => {}} />
+        <ButtonMain
+          styleComponent="default"
+          text={'Сменить пароль'}
+          onClick={() => {}}
+        />
       </div>
       <div className="child">
         <span>Удалить аккаунт</span>
         Навсегда удалить аккаунт?
-        <ButtonMain text={'Удалить аккаунт'} onClick={() => {}} />
+        <ButtonMain
+          styleComponent="default"
+          text={'Удалить аккаунт'}
+          onClick={() => {}}
+        />
       </div>
     </div>
   )
