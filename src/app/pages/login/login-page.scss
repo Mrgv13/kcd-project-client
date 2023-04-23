@@ -31,8 +31,22 @@
       background-color: #ffffff;
       display: grid;
 
+      .login__err {
+        color: red;
+        position: absolute;
+        font-size: 14px;
+      }
+
+      .pass__err {
+        color: red;
+        position: absolute;
+        font-size: 14px;
+      }
+
+
       input {
         background-color: #f6f6f6;
+        margin-top: 30px;
         padding-left: 15px;
         font-size: 14px;
         height: 50px;
@@ -43,7 +57,7 @@
         resize: none;
       }
 
-      :hover {
+      input:hover {
         background-color: #EBEBEB;
       }
     }

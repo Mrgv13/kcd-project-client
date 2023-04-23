@@ -24,23 +24,28 @@ const LoginPage = () => {
       <div className="login__form">
         <span>Авторизация</span>
         <div className="text_area">
-          {log.errorText}
-          <input
-            placeholder="Логин"
-            value={log.value}
-            maxLength={40}
-            onChange={(e) => log.onChange(e)}
-            onBlur={(e) => log.onBlur(e)}
-            autoFocus={true}
-          />
-          {pass.errorText}
-          <input
-            placeholder="Пароль"
-            value={pass.value}
-            onChange={(e) => pass.onChange(e)}
-            onBlur={(e) => pass.onBlur(e)}
-            maxLength={40}
-          />
+          <div>
+            <span className="login__err">{log.errorText}</span>
+            <input
+              placeholder="Логин"
+              value={log.value}
+              maxLength={40}
+              onChange={(e) => log.onChange(e)}
+              onBlur={(e) => log.onBlur(e)}
+              autoFocus={true}
+            />
+          </div>
+
+          <div>
+            <span className="pass__err">{pass.errorText}</span>
+            <input
+              placeholder="Пароль"
+              value={pass.value}
+              onChange={(e) => pass.onChange(e)}
+              onBlur={(e) => pass.onBlur(e)}
+              maxLength={40}
+            />
+          </div>
         </div>
         <button
           disabled={!log.inputValid || !pass.inputValid}
