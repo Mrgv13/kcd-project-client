@@ -4,10 +4,23 @@ import { works } from '../../../mock'
 
 import ButtonMain from '../../components/button/ButtonMain'
 
-import React, { useState } from 'react'
+import Modal from '../../components/modal/Modal'
+
+import { CloseBottom } from '../../../utils/icons/exportIcons'
+
+import ProgressForm from '../../components/progressForm/ProgressForm'
+
+import React, { useEffect, useState } from 'react'
 
 const ProgressWork = () => {
   const [workStatus, setWorkStatus] = useState(null)
+  const [modalActive, setModalActive] = useState(false)
+
+  const [data, setData] = useState({})
+
+  useEffect(() => {
+    console.log(data)
+  }, [data])
 
   return (
     <div className="progress__page">
@@ -24,6 +37,7 @@ const ProgressWork = () => {
         <div className="scroll__block">
           {works.worksAttributes.map((element) => (
             <div
+              key={element.name}
               className="works__attribute"
               onClick={() => setWorkStatus(element.status)}>
               <div>{element.name}</div>
@@ -54,12 +68,16 @@ const ProgressWork = () => {
           <ButtonMain
             styleComponent="default"
             text={'Добавить'}
-            onClick={() => {}}
+            onClick={() => {
+              setModalActive(true)
+            }}
           />
           <ButtonMain
             styleComponent="default"
-            text={'Удалить'}
-            onClick={() => {}}
+            text={'Редактировать'}
+            onClick={() => {
+              setModalActive(true)
+            }}
           />
         </div>
       </div>
@@ -82,6 +100,23 @@ const ProgressWork = () => {
           </div>
         )}
       </div>
+      <Modal active={modalActive} setActive={setModalActive}>
+        <div className="modal__block">
+          <div className="name__block">
+            <div className="empty"></div>
+            <div className="name">NAME</div>
+            <div className="svg__icons">
+              <CloseBottom
+                stroke={'black'}
+                onClick={() => {
+                  setModalActive(false)
+                }}
+              />
+            </div>
+          </div>
+          <ProgressForm data={data} setData={setData} />
+        </div>
+      </Modal>
     </div>
   )
 }

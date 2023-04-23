@@ -75,6 +75,38 @@
       width: 50%;
       font-weight: bold;
     }
+  }
 
+  .modal__block {
+    display: grid;
+
+
+    .name__block {
+      display: grid;
+      grid-template-areas: "A B C";
+      border-bottom: #cecdcd solid 1px;
+      padding-bottom: 10px;
+
+      .empty {
+        grid-area: A;
+      }
+
+      .name {
+        grid-area: B;
+        justify-self: center;
+      }
+
+      .svg__icons {
+        justify-self: end;
+        grid-area: C;
+      }
+
+      .svg__icons *:hover {
+        stroke: tomato;
+        cursor: pointer;
+      }
+
+
+    }
   }
 }

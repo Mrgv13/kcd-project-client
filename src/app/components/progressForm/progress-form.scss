@@ -1,0 +1,61 @@
+
+.work__form {
+  display: grid;
+  gap: 25px;
+
+  input {
+    border-radius: 8px;
+    border: 1px solid black;
+  }
+
+  input:invalid {
+    border: 1px solid black;
+  }
+
+  input:invalid:required {
+    background-color: #cecdcd;
+  }
+
+  input:valid {
+    border: 1px solid black;
+  }
+
+  .date {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    span {
+      justify-self: start;
+    }
+
+    .date__input {
+      justify-self: end;
+      display: grid;
+      gap: 25px;
+    }
+
+    border-bottom: #cecdcd solid 1px;
+    padding-bottom: 10px;
+  }
+
+  .price {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: #cecdcd solid 1px;
+    padding-bottom: 10px;
+
+    input {
+      height: 30px;
+      width: 200px;
+      text-align: center;
+      justify-self: end;
+    }
+  }
+
+  .description {
+    display: grid;
+    padding-bottom: 10px;
+  }
+
+
+}
