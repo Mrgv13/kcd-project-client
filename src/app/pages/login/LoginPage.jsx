@@ -2,7 +2,7 @@ import { userChangeAuth } from '../../../store/appSlice'
 import './login-page.scss'
 import { MAIN_PAGE } from '../../../routes/consts/pagesRoutes'
 
-import useInput from '../../../hooks/useInput'
+import useInput from '../../../hooks/login/useInput'
 
 import React from 'react'
 import { useDispatch } from 'react-redux'

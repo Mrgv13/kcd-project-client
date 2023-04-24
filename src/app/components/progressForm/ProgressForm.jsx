@@ -3,6 +3,7 @@ import './progress-form.scss'
 import ButtonMain from '../button/ButtonMain'
 
 import React, { useState } from 'react'
+import CurrencyInput from 'react-currency-input-field'
 
 const ProgressForm = ({ data, setData }) => {
   const [dateStart, setDateStart] = useState('')
@@ -31,19 +32,22 @@ const ProgressForm = ({ data, setData }) => {
       </div>
       <div className="price">
         Потрачено средств
-        <input
-          type="number"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-          required
+        <CurrencyInput
+          onValueChange={(value) => setPrice(value)}
+          prefix="₽ "
+          groupSeparator="  "
+          decimalSeparator=","
+          fixedDecimalLength={2}
+          maxLength={12}
+          step={1}
         />
       </div>
       <div className="description">
         Описание работ
-        <input
-          type="text"
+        <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
+          maxLength={700}
           required
         />
       </div>

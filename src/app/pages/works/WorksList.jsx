@@ -16,10 +16,6 @@ const WorksList = () => {
   const workID = useSelector((state) => state.work.work[0].id)
   const dispatch = useDispatch()
 
-  // useEffect(() => {
-  //   console.log(workID);
-  // }, [workID]);
-
   return (
     <>
       <div className="project">

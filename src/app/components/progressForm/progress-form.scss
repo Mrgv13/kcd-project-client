@@ -5,33 +5,24 @@
 
   input {
     border-radius: 8px;
-    border: 1px solid black;
+    border: 2px solid black;
   }
 
-  input:invalid {
-    border: 1px solid black;
-  }
-
-  input:invalid:required {
-    background-color: #cecdcd;
-  }
-
-  input:valid {
-    border: 1px solid black;
-  }
 
   .date {
+    margin-top: 10px;
     display: grid;
     grid-template-columns: 1fr 1fr;
 
     span {
+      align-self: center;
       justify-self: start;
     }
 
     .date__input {
       justify-self: end;
       display: grid;
-      gap: 25px;
+      gap: 10px;
     }
 
     border-bottom: #cecdcd solid 1px;
@@ -46,15 +37,31 @@
 
     input {
       height: 30px;
-      width: 200px;
-      text-align: center;
+      padding: 10px;
+      width: 180px;
       justify-self: end;
+      text-align: start;
+
     }
+
+
   }
 
   .description {
     display: grid;
-    padding-bottom: 10px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 10% 90%;
+
+    textarea {
+      resize: none;
+      margin-top: 12px;
+      max-height: 350px;
+      min-height: 200px;
+      text-align: start;
+      padding: 10px;
+      max-width: 50%;
+
+    }
   }
 
 

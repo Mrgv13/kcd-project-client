@@ -2,11 +2,11 @@ import React from 'react'
 
 const ProgressBar = ({ bgcolor, textColor, fontSize, completed }) => {
   const containerStyles = {
-    height: 25,
+    height: 30,
     width: '100%',
     backgroundColor: '#ffffff',
     borderRadius: 50,
-    //margin: 50,
+    border: '2px solid #868686',
   }
 
   const fillerStyles = {
