@@ -1,0 +1,20 @@
+@import "../../../common/style/variables";
+
+.setting__page__style {
+  padding-top: 75px;
+  padding-left: 30vh;
+  width: 100vw;
+  height: 100vh;
+  font-family: $font-roboto-400;
+  font-size: 24px;
+  display: grid;
+
+  .child {
+    display: grid;
+  }
+
+  span {
+    font-size: 32px;
+    font-weight: bold;
+  }
+}

@@ -1,34 +1,35 @@
 import './menu.scss'
-import { userChangeAuth } from '../../../store/appSlice'
 
-import { useDispatch } from 'react-redux'
+import { Context } from '../../../index'
+
 import { useNavigate } from 'react-router-dom'
-import React from 'react'
+import React, { useContext } from 'react'
+import { observer } from 'mobx-react'
 
-const Menu = ({ header, items, menuActive, setMenuActive, onClick }) => {
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+const Menu = observer(
+  ({ header, items, menuActive, setMenuActive, onClick }) => {
+    const { user } = useContext(Context)
+    const navigate = useNavigate()
 
-  return (
-    <div
-      className={menuActive ? 'menu active' : 'menu'}
-      onClick={() => setMenuActive(false)}>
-      <div className="menu__content" onClick={(e) => e.stopPropagation()}>
-        <div className="menu__content__link">
-          {items.map((items) => (
-            <button onClick={() => navigate(items.path)} key={items.path}>
-              {items.name}
-            </button>
-          ))}
+    return (
+      <div
+        className={menuActive ? 'menu active' : 'menu'}
+        onClick={() => setMenuActive(false)}>
+        <div className="menu__content" onClick={(e) => e.stopPropagation()}>
+          <div className="menu__content__link">
+            {items.map((items) => (
+              <button onClick={() => navigate(items.path)} key={items.path}>
+                {items.name}
+              </button>
+            ))}
+          </div>
+          <button className="sign__out" onClick={() => user.setAuth(false)}>
+            Выйти
+          </button>
         </div>
-        <button
-          className="sign__out"
-          onClick={() => dispatch(userChangeAuth())}>
-          Выйти
-        </button>
       </div>
-    </div>
-  )
-}
+    )
+  },
+)
 
 export default Menu

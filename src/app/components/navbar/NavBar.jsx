@@ -1,12 +1,12 @@
-import { brigadesRoutes } from '../../../routes/brigadesRoutes'
-import { projectRoutes } from '../../../routes/projectRoutes'
-import { BRIGADES_PAGE } from '../../../routes/consts/brigadesRoutes'
+import { brigadesRoutes } from '../../../common/routes/brigadesRoutes'
+import { projectRoutes } from '../../../common/routes/projectRoutes'
+import { BRIGADES_PAGE } from '../../../common/routes/consts/brigadesRoutes'
 import {
   MAIN_PAGE,
   SETTINGS_PAGE,
   USER_SETTINGS_PAGE,
-} from '../../../routes/consts/pagesRoutes'
-import { changeRoutes } from '../../../store/menuSlice'
+} from '../../../common/routes/consts/pagesRoutes'
+import { changeRoutes } from '../../../common/store/menuSlice'
 import './navbar.scss'
 import ButtonMain from '../button/ButtonMain'
 import Menu from '../menu/Menu'
@@ -14,16 +14,19 @@ import {
   MenuButtom,
   Settings,
   UserSettings,
-} from '../../../utils/icons/exportIcons'
+} from '../../../common/utils/icons/exportIcons'
 
-import React, { useState } from 'react'
+import { Context } from '../../../index'
+
+import React, { useContext, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { useNavigate } from 'react-router-dom'
+import { observer } from 'mobx-react'
 
-const NavBar = () => {
-  const auth = useSelector((state) => state.auth.auth[0].type)
+const NavBar = observer(() => {
   const menu = useSelector((state) => state.menu.menu[0].menuAttribute)
+  const { user } = useContext(Context)
   const dispatch = useDispatch()
   const [menuActive, setMenuActive] = useState(false)
   const navigate = useNavigate()
@@ -36,7 +39,7 @@ const NavBar = () => {
         </div>
       </div>
       <div className="navbar__button" onClick={() => setMenuActive(false)}>
-        {auth ? (
+        {user.isAuth ? (
           <ButtonMain
             text={'ПРОЕКТЫ'}
             onClick={() => {
@@ -47,7 +50,7 @@ const NavBar = () => {
         ) : (
           <></>
         )}
-        {auth ? (
+        {user.isAuth ? (
           <ButtonMain
             text={'БРИГАДЫ'}
             onClick={() => {
@@ -60,7 +63,7 @@ const NavBar = () => {
         )}
       </div>
       <div className="settings">
-        {auth ? (
+        {user.isAuth ? (
           <div className="svg__icons">
             <Settings
               stroke={'black'}
@@ -70,7 +73,7 @@ const NavBar = () => {
         ) : (
           <></>
         )}
-        {auth ? (
+        {user.isAuth ? (
           <div className="svg__icons">
             <UserSettings
               stroke={'black'}
@@ -88,6 +91,6 @@ const NavBar = () => {
       />
     </div>
   )
-}
+})
 
 export default NavBar

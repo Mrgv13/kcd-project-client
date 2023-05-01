@@ -1,0 +1,6 @@
+export const LOGIN_ROUTE = '/login'
+export const SIGN_ROUTE = '/reg'
+export const MAIN_PAGE = '/projects'
+export const SETTINGS_PAGE = '/setting'
+export const USER_SETTINGS_PAGE = '/user'
+export const ERROR_PAGE = '/err'

@@ -1,18 +1,26 @@
-import App from './App';
+import App from './App'
 
-import store from './store';
+import store from './common/store'
+import UserStore from './common/store/UserStore'
 
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { Provider } from 'react-redux';
+import React, { createContext } from 'react'
+import ReactDOM from 'react-dom/client'
+import { Provider } from 'react-redux'
 
-import './index.css';
+import './index.css'
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+export const Context = createContext(null)
+
+const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <Context.Provider
+        value={{
+          user: new UserStore(),
+        }}>
+        <App />
+      </Context.Provider>
     </Provider>
   </React.StrictMode>,
-);
+)

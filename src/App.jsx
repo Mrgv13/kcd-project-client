@@ -1,19 +1,24 @@
+import { Context } from './index'
+
 import AppRouter from './app/AppRouter'
 
 import NavBar from './app/components/navbar/NavBar'
 
 import { BrowserRouter } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useContext } from 'react'
+import { observer } from 'mobx-react'
 
-function App() {
-  const auth = useSelector((state) => state.auth.auth[0].type)
+const App = observer(() => {
+  // const auth = useSelector((state) => state.auth.auth[0].type)
+  const { user } = useContext(Context)
+  console.log(user)
 
   return (
     <BrowserRouter>
-      {auth ? <NavBar /> : <></>}
+      {user.isAuth ? <NavBar /> : <></>}
       <AppRouter />
     </BrowserRouter>
   )
-}
+})
 
 export default App
