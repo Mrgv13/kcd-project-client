@@ -11,6 +11,11 @@ const Menu = observer(
     const { user } = useContext(Context)
     const navigate = useNavigate()
 
+    const logOut = () => {
+      user.setUser({})
+      user.setAuth(false)
+    }
+
     return (
       <div
         className={menuActive ? 'menu active' : 'menu'}
@@ -23,7 +28,7 @@ const Menu = observer(
               </button>
             ))}
           </div>
-          <button className="sign__out" onClick={() => user.setAuth(false)}>
+          <button className="sign__out" onClick={logOut}>
             Выйти
           </button>
         </div>

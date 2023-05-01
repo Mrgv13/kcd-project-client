@@ -3,18 +3,15 @@ import { LOGIN_ROUTE } from '../../../common/routes/consts/pagesRoutes'
 
 import useInput from '../../../common/hooks/login/useInput'
 
-import { registration } from '../../../http/user-api'
+import { registration } from '../../../common/http/user-api'
 
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { observer } from 'mobx-react'
 
 const LoginPage = observer(() => {
-  // const dispatch = useDispatch();
-
   const signIn = async () => {
     const response = await registration(log.value, pass.value)
-    console.log(response)
   }
 
   const log = useInput('', {
@@ -55,12 +52,10 @@ const LoginPage = observer(() => {
         </div>
         <button
           disabled={!log.inputValid || !pass.inputValid}
-          onClick={signIn}
-          // onClick={() => {
-          //   dispatch(userChangeAuth());
-          //   navigate(MAIN_PAGE);
-          // }}
-        >
+          onClick={() => {
+            signIn()
+            navigate(LOGIN_ROUTE)
+          }}>
           Зарегистрироваться
         </button>
         <button

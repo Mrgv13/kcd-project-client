@@ -9,7 +9,6 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 
 const AppRouter = () => {
   const { user } = useContext(Context)
-  console.log(user)
   return (
     <Routes>
       {user.isAuth &&

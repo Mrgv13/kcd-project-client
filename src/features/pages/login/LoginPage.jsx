@@ -6,15 +6,15 @@ import {
 
 import useInput from '../../../common/hooks/login/useInput'
 
-import { login } from '../../../http/user-api'
+import { login } from '../../../common/http/user-api'
 
 import { Context } from '../../../index'
 
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { observer } from 'mobx-react'
 
-const LoginPage = () => {
-  // const dispatch = useDispatch();
+const LoginPage = observer(() => {
   const { user } = useContext(Context)
 
   const log = useInput('', {
@@ -26,15 +26,16 @@ const LoginPage = () => {
   const navigate = useNavigate()
 
   const logIn = async () => {
+    let data
     try {
-      await login(log.value, pass.value)
+      data = await login(log.value, pass.value)
+      user.setUser(user)
+      user.setAuth(true)
+      navigate(MAIN_PAGE)
     } catch (e) {
       alert(e.response.data.message)
     }
   }
-
-  // dispatch(userChangeAuth());
-  // navigate(MAIN_PAGE);
 
   return (
     <div className="login__style">
@@ -64,12 +65,7 @@ const LoginPage = () => {
             />
           </div>
         </div>
-        <button
-          disabled={!log.inputValid || !pass.inputValid}
-          onClick={() => {
-            user.setAuth(true)
-            navigate(MAIN_PAGE)
-          }}>
+        <button disabled={!log.inputValid || !pass.inputValid} onClick={logIn}>
           Войти
         </button>
         <button
@@ -81,6 +77,6 @@ const LoginPage = () => {
       </div>
     </div>
   )
-}
+})
 
 export default LoginPage

@@ -4,14 +4,36 @@ import AppRouter from './app/AppRouter'
 
 import NavBar from './app/components/navbar/NavBar'
 
+import { check } from './common/http/user-api'
+
 import { BrowserRouter } from 'react-router-dom'
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { observer } from 'mobx-react'
+import { BeatLoader } from 'react-spinners'
 
 const App = observer(() => {
-  // const auth = useSelector((state) => state.auth.auth[0].type)
   const { user } = useContext(Context)
-  console.log(user)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    setTimeout(() => {
+      check()
+        .then(() => {
+          user.setAuth(user)
+          user.setAuth(true)
+        })
+        .finally(() => setLoading(false))
+    }, 3000)
+  }, [])
+
+  if (loading) {
+    return (
+      <BeatLoader
+        style={{ position: 'absolute', top: '50%', left: '50%' }}
+        color="#6200EE"
+      />
+    )
+  }
 
   return (
     <BrowserRouter>
