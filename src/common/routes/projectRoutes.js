@@ -5,10 +5,10 @@ import {
   WORKS_ROUTE,
 } from './consts/projectRoutes'
 
-import Calendar from '../../app/components/calendar/Calendar'
-import WorksList from '../../features/pages/works/WorksList'
-import Documents from '../../app/components/documents/Documents'
-import ProgressWork from '../../features/pages/progress-work/ProgressWork'
+import Calendar from '../../features/calendar/Calendar'
+import WorksList from '../../features/works/WorksList'
+import Documents from '../../features/documents/Documents'
+import ProgressWork from '../../features/progress-work/ProgressWork'
 
 export const projectRoutes = [
   {

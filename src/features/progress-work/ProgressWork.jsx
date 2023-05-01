@@ -1,14 +1,14 @@
 import './progress-work.scss'
-import ProgressBar from '../../../app/components/progress-bar/ProgressBar'
-import { works } from '../../../mock'
+import ProgressBar from '../../common/components/progress-bar/ProgressBar'
+import { works } from '../../mock'
 
-import ButtonMain from '../../../app/components/button/ButtonMain'
+import ButtonMain from '../../common/components/button/ButtonMain'
 
-import Modal from '../../../app/components/modal/Modal'
+import Modal from '../../common/components/modal/Modal'
 
-import { CloseBottom } from '../../../common/utils/icons/exportIcons'
+import { CloseBottom } from '../../common/utils/icons/exportIcons'
 
-import ProgressForm from '../../../app/components/progressForm/ProgressForm'
+import ProgressForm from '../../common/components/progressForm/ProgressForm'
 
 import React, { useState } from 'react'
 

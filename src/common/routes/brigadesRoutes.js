@@ -1,6 +1,6 @@
 import { BRIGADES_PAGE } from './consts/brigadesRoutes'
 
-import BrigadesList from '../../features/pages/brigades/BrigadesList'
+import BrigadesList from '../../features/brigades/BrigadesList'
 
 export const brigadesRoutes = [
   {

@@ -8,7 +8,7 @@ import {
 } from '../../../common/routes/consts/pagesRoutes'
 import { changeRoutes } from '../../../common/store/menuSlice'
 import './navbar.scss'
-import ButtonMain from '../button/ButtonMain'
+import ButtonMain from '../../../common/components/button/ButtonMain'
 import Menu from '../menu/Menu'
 import {
   MenuButtom,

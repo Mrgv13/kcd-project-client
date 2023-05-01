@@ -1,7 +1,7 @@
 import { LOGIN_ROUTE, SIGN_ROUTE } from './consts/pagesRoutes'
 
-import LoginPage from '../../features/pages/login/LoginPage'
-import SignInPage from '../../features/pages/login/SignInPage'
+import LoginPage from '../../features/login/LoginPage'
+import SignInPage from '../../features/login/SignInPage'
 
 export const publicRoutes = [
   {

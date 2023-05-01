@@ -7,9 +7,9 @@ import { projectRoutes } from './projectRoutes'
 
 import { brigadesRoutes } from './brigadesRoutes'
 
-import SettingsPage from '../../features/pages/settings/SettingsPage'
-import UserSettingPage from '../../features/pages/settings/UserSettingPage'
-import ProjectPage from '../../features/pages/project/ProjectPage'
+import SettingsPage from '../../features/settings/SettingsPage'
+import UserSettingPage from '../../features/settings/UserSettingPage'
+import ProjectPage from '../../features/project/ProjectPage'
 
 export const authRoutes = [
   {

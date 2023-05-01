@@ -1,14 +1,11 @@
 import './login-page.scss'
-import {
-  MAIN_PAGE,
-  SIGN_ROUTE,
-} from '../../../common/routes/consts/pagesRoutes'
+import { MAIN_PAGE, SIGN_ROUTE } from '../../common/routes/consts/pagesRoutes'
 
-import useInput from '../../../common/hooks/login/useInput'
+import useInput from '../../common/hooks/login/useInput'
 
-import { login } from '../../../common/http/user-api'
+import { login } from '../../common/http/user-api'
 
-import { Context } from '../../../index'
+import { Context } from '../../index'
 
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'

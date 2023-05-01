@@ -1,5 +1,5 @@
 import './setting-page.scss'
-import ButtonMain from '../../../app/components/button/ButtonMain'
+import ButtonMain from '../../common/components/button/ButtonMain'
 
 import React from 'react'
 

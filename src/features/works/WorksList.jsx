@@ -1,12 +1,12 @@
-import ItemCard from '../../../app/components/cards-list/card-item/ItemCard'
+import ItemCard from '../../common/components/cards-list/card-item/ItemCard'
 
-import Modal from '../../../app/components/modal/Modal'
+import Modal from '../../common/components/modal/Modal'
 
-import { workChangeID } from '../../../common/store/worksSlice'
+import { workChangeID } from '../../common/store/worksSlice'
 
-import WorkCard from '../../../app/components/works-card/WorkCard'
+import WorkCard from '../../common/components/works-card/WorkCard'
 
-import { projects, works } from '../../../mock'
+import { projects, works } from '../../mock'
 
 import { useDispatch, useSelector } from 'react-redux'
 import React, { useState } from 'react'

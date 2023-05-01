@@ -1,9 +1,9 @@
 import './login-page.scss'
-import { LOGIN_ROUTE } from '../../../common/routes/consts/pagesRoutes'
+import { LOGIN_ROUTE } from '../../common/routes/consts/pagesRoutes'
 
-import useInput from '../../../common/hooks/login/useInput'
+import useInput from '../../common/hooks/login/useInput'
 
-import { registration } from '../../../common/http/user-api'
+import { registration } from '../../common/http/user-api'
 
 import React from 'react'
 import { useNavigate } from 'react-router-dom'

@@ -1,6 +1,6 @@
 import './brigade-page.scss'
 
-import ItemCard from '../../../app/components/cards-list/card-item/ItemCard'
+import ItemCard from '../../common/components/cards-list/card-item/ItemCard'
 
 import React from 'react'
 
