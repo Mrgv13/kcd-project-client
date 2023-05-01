@@ -65,12 +65,13 @@ const LoginPage = observer(() => {
         <button disabled={!log.inputValid || !pass.inputValid} onClick={logIn}>
           Войти
         </button>
-        <button
+        Нет аккаунт?
+        <a
           onClick={() => {
             navigate(SIGN_ROUTE)
           }}>
-          Sign In
-        </button>
+          Зарегистрируйтесь
+        </a>
       </div>
     </div>
   )

@@ -63,6 +63,8 @@
     }
 
     button {
+      margin-top: 12px;
+      margin-bottom: 12px;
       background-color: #6200EE;
       align-self: end;
       color: #ffffff;
@@ -72,7 +74,16 @@
       border-radius: 10px;
     }
 
-    :hover {
+    button:hover {
+      cursor: pointer;
+    }
+
+    a {
+      color: #9d6ef8;
+    }
+
+    a:hover {
+      color: #7834f8;
       cursor: pointer;
     }
   }

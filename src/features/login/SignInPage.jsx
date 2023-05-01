@@ -58,12 +58,13 @@ const LoginPage = observer(() => {
           }}>
           Зарегистрироваться
         </button>
-        <button
+        Есть аккаунт?
+        <a
           onClick={() => {
             navigate(LOGIN_ROUTE)
           }}>
-          Log In
-        </button>
+          Войти
+        </a>
       </div>
     </div>
   )

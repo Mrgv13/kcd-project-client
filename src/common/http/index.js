@@ -1,11 +1,11 @@
 import axios from 'axios'
 
 const $host = axios.create({
-  baseURL: 'http://localhost:5050',
+  baseURL: 'http://localhost:5051',
 })
 
 const $authHost = axios.create({
-  baseURL: 'http://localhost:5050',
+  baseURL: 'http://localhost:5051',
 })
 
 const authInterceptor = (config) => {
