@@ -9,7 +9,7 @@ const Calendar = () => {
       name: 'Работа 1',
       start: '2023-04-17',
       end: '2023-04-25',
-      progress: 10,
+      progress: 100,
       //dependencies: '',
     },
     {

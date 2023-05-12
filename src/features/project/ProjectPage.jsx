@@ -1,35 +1,31 @@
+import { Context } from '../../index'
+
 import CardsList from '../../common/components/cards-list/CardsList'
 
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 
-// mocking
+import { observer } from 'mobx-react'
+import { BeatLoader } from 'react-spinners'
 
-const projects = [
-  {
-    id: 1,
-    worksName: 'Проект 1',
-    worksAttributes: ['Детали', 'Сроки', 'Ресурсы'],
-  },
-  {
-    id: 2,
-    worksName: 'Проект 2',
-    worksAttributes: ['Детали', 'Сроки', 'Ресурсы'],
-  },
-  {
-    id: 3,
-    worksName: 'Проект 3',
-    worksAttributes: ['Детали', 'Сроки', 'Ресурсы'],
-  },
-]
+const ProjectPage = observer(() => {
+  const { projects, user } = useContext(Context)
 
-//
+  useEffect(() => {
+    void projects.getProjectsList(user.user.id)
 
-const ProjectPage = () => {
-  return (
-    <>
-      <CardsList projects={projects} />
-    </>
-  )
-}
+    return () => projects.resetStore()
+  }, [])
+
+  if (projects.loading) {
+    return (
+      <BeatLoader
+        style={{ position: 'absolute', top: '50%', left: '50%' }}
+        color="#6200EE"
+      />
+    )
+  }
+
+  return <CardsList />
+})
 
 export default ProjectPage

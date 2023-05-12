@@ -4,7 +4,6 @@ import { BRIGADES_PAGE } from '../../../common/routes/consts/brigadesRoutes'
 import {
   MAIN_PAGE,
   SETTINGS_PAGE,
-  USER_SETTINGS_PAGE,
 } from '../../../common/routes/consts/pagesRoutes'
 import { changeRoutes } from '../../../common/store/menuSlice'
 import './navbar.scss'
@@ -77,7 +76,8 @@ const NavBar = observer(() => {
           <div className="svg__icons">
             <UserSettings
               stroke={'black'}
-              onClick={() => navigate(USER_SETTINGS_PAGE)}
+              // onClick={() => navigate(USER_SETTINGS_PAGE)}
+              onClick={() => console.log(user.user.id)}
             />
           </div>
         ) : (

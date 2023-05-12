@@ -26,7 +26,7 @@ const LoginPage = observer(() => {
     let data
     try {
       data = await login(log.value, pass.value)
-      user.setUser(user)
+      user.setUser(data)
       user.setAuth(true)
       navigate(MAIN_PAGE)
     } catch (e) {

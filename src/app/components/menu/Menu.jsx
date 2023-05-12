@@ -12,7 +12,8 @@ const Menu = observer(
     const navigate = useNavigate()
 
     const logOut = () => {
-      user.setUser({})
+      user.setUser(undefined)
+      localStorage.setItem('token', '')
       user.setAuth(false)
     }
 

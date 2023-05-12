@@ -21,20 +21,24 @@ const WorksList = () => {
       <div className="project">
         <div className="text">Работы</div>
         <div className="project__recent">
-          {projects.map((project) => (
-            <div
-              key={project.id}
-              onClick={() => {
-                dispatch(workChangeID(project.id))
-              }}>
-              <ItemCard
+          {!projects ? (
+            <div>data not found</div>
+          ) : (
+            projects.map((project) => (
+              <div
                 key={project.id}
-                worksName={project.worksName}
-                worksAttributes={project.worksAttributes}
-                functional={() => setModalActive(true)}
-              />
-            </div>
-          ))}
+                onClick={() => {
+                  dispatch(workChangeID(project.id))
+                }}>
+                <ItemCard
+                  key={project.id}
+                  worksName={project.worksName}
+                  worksAttributes={project.worksAttributes}
+                  functional={() => setModalActive(true)}
+                />
+              </div>
+            ))
+          )}
         </div>
       </div>
       <Modal active={modalActive} setActive={setModalActive}>
@@ -44,7 +48,6 @@ const WorksList = () => {
             worksAttributes={works.worksAttributes}
           />
         )}
-        {/*TODO запрос перечня работ по id*/}
       </Modal>
     </>
   )

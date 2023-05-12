@@ -2,7 +2,7 @@ import './item-card.scss'
 
 import React from 'react'
 
-const ItemCard = ({ worksName, worksAttributes, functional }) => {
+const ItemCard = ({ worksName, worksAttributes = [], functional }) => {
   return (
     <>
       <div className="project__card" onClick={functional}>
@@ -12,7 +12,7 @@ const ItemCard = ({ worksName, worksAttributes, functional }) => {
           <div className="project__attributes">
             <ul>
               {worksAttributes.map((element) => (
-                <li key={element}>{element}</li>
+                <li key={element.id}>{element.work_name}</li>
               ))}
             </ul>
           </div>

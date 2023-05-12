@@ -2,6 +2,7 @@ import App from './App'
 
 import store from './common/store'
 import UserStore from './common/store/UserStore'
+import ProjectStore from './common/store/ProjectStore'
 
 import React, { createContext } from 'react'
 import ReactDOM from 'react-dom/client'
@@ -18,6 +19,7 @@ root.render(
       <Context.Provider
         value={{
           user: new UserStore(),
+          projects: new ProjectStore(),
         }}>
         <App />
       </Context.Provider>

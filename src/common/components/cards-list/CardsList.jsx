@@ -1,23 +1,30 @@
-import ItemCard from './card-item/ItemCard'
-
-import React from 'react'
 import './cards-list.scss'
 
-const CardsList = ({ projects }) => {
+import ItemCard from './card-item/ItemCard'
+
+import { Context } from '../../../index'
+
+import { observer } from 'mobx-react'
+
+import { useContext } from 'react'
+
+const CardsList = observer(() => {
+  const { projects } = useContext(Context)
+
   return (
     <div className="project">
       <div className="text">ВАШИ РАБОТЫ</div>
       <div className="project__recent">
-        {projects.map((project) => (
+        {projects.isProjects.map((el) => (
           <ItemCard
-            key={project.id}
-            worksName={project.worksName}
-            worksAttributes={project.worksAttributes}
+            key={el.id}
+            worksName={el.project_name}
+            worksAttributes={el.works}
           />
         ))}
       </div>
     </div>
   )
-}
+})
 
 export default CardsList

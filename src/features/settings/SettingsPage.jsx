@@ -1,16 +1,18 @@
 import './setting-page.scss'
 import ButtonMain from '../../common/components/button/ButtonMain'
 
-import React from 'react'
+import { Context } from '../../index'
+
+import React, { useContext } from 'react'
 
 const SettingsPage = () => {
+  const { user } = useContext(Context)
   return (
     <div className="setting__page__style">
       <span>Настройки</span>
       <div className="child">
         <span>Email адрес</span>
-        Ваш адрес электронной почты - {`test@mail.ru`}
-        {/*TODO Сделать почту*/}
+        Ваш адрес электронной почты - {user.user.email}
         <ButtonMain
           styleComponent="default"
           text={'Сменить почту'}
