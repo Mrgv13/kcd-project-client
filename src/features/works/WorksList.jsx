@@ -2,55 +2,75 @@ import ItemCard from '../../common/components/cards-list/card-item/ItemCard'
 
 import Modal from '../../common/components/modal/Modal'
 
-import { workChangeID } from '../../common/store/worksSlice'
-
 import WorkCard from '../../common/components/works-card/WorkCard'
 
-import { projects, works } from '../../mock'
+import { Context } from '../../index'
 
 import { useDispatch, useSelector } from 'react-redux'
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { observer } from 'mobx-react'
 
-const WorksList = () => {
+const WorksList = observer(() => {
+  const { projects, user, works } = useContext(Context)
   const [modalActive, setModalActive] = useState(false)
   const workID = useSelector((state) => state.work.work[0].id)
   const dispatch = useDispatch()
 
+  useEffect(() => {
+    void projects.getProjectsList(user.user.id)
+
+    return () => projects.resetStore()
+  }, [])
+
+  const getAllWorks = (projectId) => {
+    void works.resetStore()
+
+    void works.getProjectsList(projectId)
+  }
+
   return (
     <>
       <div className="project">
+        <div style={{ display: 'flex' }}>
+          выберите проект:
+          {projects.isProjects.map((el) => (
+            <button onClick={() => getAllWorks(el.id)}>
+              {el.project_name}
+            </button>
+          ))}
+        </div>
+
         <div className="text">Работы</div>
         <div className="project__recent">
-          {!projects ? (
-            <div>data not found</div>
-          ) : (
-            projects.map((project) => (
-              <div
-                key={project.id}
-                onClick={() => {
-                  dispatch(workChangeID(project.id))
-                }}>
-                <ItemCard
-                  key={project.id}
-                  worksName={project.worksName}
-                  worksAttributes={project.worksAttributes}
-                  functional={() => setModalActive(true)}
-                />
-              </div>
-            ))
-          )}
+          {works.isWorks.map((work) => (
+            <div
+              key={work.id}
+              onClick={() => {
+                void works.resetStoreWork()
+                void works.getOneWork(work.id)
+              }}>
+              <ItemCard
+                key={work.id}
+                worksName={work.work_name}
+                worksAttributes={work.works_attributes}
+                functional={() => setModalActive(true)}
+              />
+            </div>
+          ))}
         </div>
       </div>
       <Modal active={modalActive} setActive={setModalActive}>
-        {!!workID && (
+        {!works.loadingWork ? (
           <WorkCard
-            name={works.worksName}
-            worksAttributes={works.worksAttributes}
+            name={works.isWork.work_name}
+            worksAttributes={works.isWork.works_attributes}
           />
+        ) : (
+          <div>LOADING</div>
         )}
       </Modal>
     </>
   )
-}
+})
 
 export default WorksList

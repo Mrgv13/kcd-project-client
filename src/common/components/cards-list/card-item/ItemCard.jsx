@@ -2,7 +2,7 @@ import './item-card.scss'
 
 import React from 'react'
 
-const ItemCard = ({ worksName, worksAttributes = [], functional }) => {
+const ItemCard = ({ worksName, worksAttributes = [], functional, id }) => {
   return (
     <>
       <div className="project__card" onClick={functional}>
