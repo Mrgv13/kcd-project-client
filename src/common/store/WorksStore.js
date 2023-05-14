@@ -1,4 +1,4 @@
-import { fetchOneWork, fetchWorks } from '../http/work-ip'
+import { fetchOneWork, fetchWorks } from '../http/work-aip'
 
 import { makeAutoObservable, runInAction } from 'mobx'
 

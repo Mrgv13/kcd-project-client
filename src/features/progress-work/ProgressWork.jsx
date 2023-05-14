@@ -1,22 +1,45 @@
 import './progress-work.scss'
+
 import ProgressBar from '../../common/components/progress-bar/ProgressBar'
+
 import { works } from '../../mock'
 
 import ButtonMain from '../../common/components/button/ButtonMain'
 
 import Modal from '../../common/components/modal/Modal'
 
-import { CloseBottom } from '../../common/utils/icons/exportIcons'
+import { CloseBottom, Trash } from '../../common/utils/icons/exportIcons'
 
 import ProgressForm from '../../common/components/progressForm/ProgressForm'
 
-import React, { useState } from 'react'
+import { Context } from '../../index'
 
-const ProgressWork = () => {
+import { deleteWorkAttrebute } from '../../common/http/workAtt-api'
+
+import React, { useContext, useEffect, useState } from 'react'
+import { observer } from 'mobx-react'
+import { useParams } from 'react-router-dom'
+
+const ProgressWork = observer(() => {
+  const { workAttr } = useContext(Context)
+  const params = useParams()
+
+  useEffect(() => {
+    void workAttr.getProjectsList(params.id)
+
+    console.log(workAttr.isWorksAttr)
+
+    return () => workAttr.resetStore
+  }, [workAttr])
+
   const [workStatus, setWorkStatus] = useState(null)
   const [modalActive, setModalActive] = useState(false)
 
   const [data, setData] = useState({})
+
+  const deleteWorkAtt = (id) => {
+    deleteWorkAttrebute(id).then((data) => window.location.reload())
+  }
 
   return (
     <div className="progress__page">
@@ -35,22 +58,27 @@ const ProgressWork = () => {
               </div>
             </div>
             <div className="scroll__block">
-              {works.worksAttributes.map((element) => (
+              {workAttr.isWorksAttr.map((element) => (
                 <div
-                  key={element.name}
+                  key={element.id}
                   className="works__attribute"
-                  onClick={() => setWorkStatus(element.status)}>
-                  <div>{element.name}</div>
-                  <div>{`${element.dateStart} - ${element.dateEnd}`}</div>
-                  <div>{element.price || 0} ₽</div>
+                  onClick={() =>
+                    setWorkStatus(element.works_attributes_status)
+                  }>
+                  <div>{element.work_name}</div>
+                  <div>{`${element.date_start} - ${element.date_end}`}</div>
+                  <div>{element.price} ₽</div>
                   <div className="progress-bar__mini">
-                    {!!element.status ? (
+                    {!!element.works_attributes_status ? (
                       <ProgressBar
-                        completed={element.status.percentCompleted || 0}
+                        completed={
+                          element.works_attributes_status.percent_complited || 0
+                        }
                         bgcolor={'#7BD079'}
                         fontSize={'16px'}
                         textColor={
-                          element.status.percentCompleted < 36 && 'black'
+                          element.works_attributes_status.percent_complited <
+                            36 && 'black'
                         }
                       />
                     ) : (
@@ -61,6 +89,17 @@ const ProgressWork = () => {
                         textColor={'black'}
                       />
                     )}
+                  </div>
+                  <div
+                    onClick={() => {
+                      deleteWorkAtt(element.id)
+                    }}
+                    style={{
+                      cursor: 'pointer',
+                      position: 'fixed',
+                      right: 10,
+                    }}>
+                    <Trash />
                   </div>
                 </div>
               ))}
@@ -87,9 +126,9 @@ const ProgressWork = () => {
             {!!workStatus ? (
               <div className="progress-bar">
                 <ProgressBar
-                  completed={workStatus.percentCompleted || 0}
+                  completed={workStatus.percent_complited || 0}
                   bgcolor={'#7BD079'}
-                  textColor={workStatus.percentCompleted < 36 && 'black'}
+                  textColor={workStatus.percent_complited < 36 && 'black'}
                 />
               </div>
             ) : (
@@ -124,6 +163,6 @@ const ProgressWork = () => {
       </Modal>
     </div>
   )
-}
+})
 
 export default ProgressWork

@@ -1,7 +1,7 @@
 import { $authHost } from './index'
 
-export const createWork = async (project) => {
-  const data = await $authHost.post('api-works/', project)
+export const createWork = async (work) => {
+  const data = await $authHost.post('api-works/', work)
   return data
 }
 

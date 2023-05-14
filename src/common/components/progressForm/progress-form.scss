@@ -1,4 +1,3 @@
-
 .work__form {
   display: grid;
   gap: 25px;
@@ -7,7 +6,6 @@
     border-radius: 8px;
     border: 2px solid black;
   }
-
 
   .date {
     margin-top: 10px;
@@ -41,28 +39,19 @@
       width: 180px;
       justify-self: end;
       text-align: start;
-
     }
-
-
   }
 
   .description {
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 10% 90%;
+    grid-template-columns: 1fr 1fr;
 
-    textarea {
-      resize: none;
-      margin-top: 12px;
-      max-height: 350px;
-      min-height: 200px;
-      text-align: start;
+    input {
+      height: 30px;
       padding: 10px;
-      max-width: 50%;
-
+      width: 180px;
+      justify-self: end;
+      text-align: start;
     }
   }
-
-
 }

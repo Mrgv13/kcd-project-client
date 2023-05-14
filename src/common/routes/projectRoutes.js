@@ -27,7 +27,7 @@ export const projectRoutes = [
     name: 'Загрузка документов',
   },
   {
-    path: PROGRESS_WORK,
+    path: PROGRESS_WORK + '/:id',
     Component: ProgressWork,
     name: 'Прогресс работ',
   },

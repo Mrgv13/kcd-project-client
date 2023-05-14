@@ -5,8 +5,8 @@ export const createWorkAtt = async (project) => {
   return data
 }
 
-export const fetchWorkAtt = async (projectId) => {
-  const data = await $authHost.get(`works_attributes/?projectId=${projectId}`)
+export const fetchWorkAttr = async (workId) => {
+  const data = await $authHost.get(`works_attributes/?workId=${workId}`)
   return data
 }
 

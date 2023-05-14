@@ -4,6 +4,7 @@ import store from './common/store'
 import UserStore from './common/store/UserStore'
 import ProjectStore from './common/store/ProjectStore'
 import WorksStore from './common/store/WorksStore'
+import WorksAttrStore from './common/store/WorksAttrStore'
 
 import React, { createContext } from 'react'
 import ReactDOM from 'react-dom/client'
@@ -22,6 +23,7 @@ root.render(
           user: new UserStore(),
           projects: new ProjectStore(),
           works: new WorksStore(),
+          workAttr: new WorksAttrStore(),
         }}>
         <App />
       </Context.Provider>

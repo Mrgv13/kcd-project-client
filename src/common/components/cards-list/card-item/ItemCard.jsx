@@ -1,22 +1,45 @@
 import './item-card.scss'
 
-import React from 'react'
+import { Context } from '../../../../index'
 
-const ItemCard = ({ worksName, worksAttributes = [], functional, id }) => {
+import { PROGRESS_WORK } from '../../../routes/consts/projectRoutes'
+
+import React, { useContext } from 'react'
+
+import { useNavigate } from 'react-router-dom'
+
+const ItemCard = ({
+  worksName,
+  worksAttributes = [],
+  functional,
+  price,
+  worksStatus = 0,
+  id,
+}) => {
+  const navigate = useNavigate()
+  const { workAttr } = useContext(Context)
   return (
     <>
       <div className="project__card" onClick={functional}>
         <div className="color__row"></div>
         <div>
           <div className="project__name">{worksName}</div>
-          <div className="project__attributes">
-            <ul>
-              {worksAttributes.map((element) => (
-                <li key={element.id}>{element.work_name}</li>
-              ))}
-            </ul>
+          {price && worksStatus && (
+            <div className="project__attributes">
+              <ul>
+                <li>{`Цена: ${price} ₽`}</li>
+                <li>{`Процент выполнения: ${worksStatus.percent_complited} %`}</li>
+              </ul>
+            </div>
+          )}
+          <div
+            className="last__active"
+            onClick={() => {
+              workAttr.setWorkId(id)
+              navigate(PROGRESS_WORK + `/${id}`)
+            }}>
+            Недавняя активность
           </div>
-          <div className="last__active">Недавняя активность</div>
         </div>
       </div>
     </>
