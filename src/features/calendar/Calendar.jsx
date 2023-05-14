@@ -1,59 +1,81 @@
-import React from 'react'
+import { Context } from '../../index'
+
 import { FrappeGantt } from 'frappe-gantt-react'
+
 import './calendar.scss'
 
-const Calendar = () => {
-  const tasks = [
-    {
-      id: 'Task 1',
-      name: 'Работа 1',
-      start: '2023-04-17',
-      end: '2023-04-25',
-      progress: 100,
-      //dependencies: '',
-    },
-    {
-      id: 'Task 2',
-      name: 'Работа 2',
-      start: '2023-04-25',
-      end: '2023-04-30',
-      progress: null,
-      dependencies: 'Task 1',
-    },
-    {
-      id: 'Task 3',
-      name: 'Работа 3',
-      start: '2023-05-05',
-      end: '2023-05-23',
-      progress: 0,
-      dependencies: 'Task 2, Task 1',
-    },
-    {
-      id: 'Task 3',
-      name: 'Работа 3',
-      start: '2023-05-05',
-      end: '2023-05-23',
-      progress: 0,
-      dependencies: 'Task 2, Task 1',
-    },
-  ]
+import { observer } from 'mobx-react'
+
+import React, { useContext, useEffect, useState } from 'react'
+
+const Calendar = observer(() => {
+  const { projects, user, works, workAttr } = useContext(Context)
+  const arr = []
+  const [workArr, setWorkArr] = useState([])
+
+  useEffect(() => {
+    void projects.getProjectsList(user.user.id)
+
+    return () => projects.resetStore()
+  }, [])
+
+  const getAllWorks = (projectId) => {
+    void works.resetStore()
+
+    void works.getProjectsList(projectId)
+  }
+
+  useEffect(() => {
+    works.isWorks.forEach(
+      (el) =>
+        arr.push({
+          id: el.id.toString(),
+          name: el.work_name,
+          start: el.date_start,
+          end: el.date_end,
+          progress: el.works_status.percent_complited,
+        }),
+      setWorkArr(arr),
+    )
+  }, [works.isWorks])
 
   return (
     <div className="calendar__block">
-      <FrappeGantt
-        tasks={tasks}
-        // viewMode={this.state.mode}
-        onClick={(task) => console.log(task, 'click')}
-        onDateChange={(task, start, end) =>
-          console.log(task, start, end, 'date')
-        }
-        onProgressChange={(task, progress) =>
-          console.log(task, progress, 'progress')
-        }
-        onTasksChange={(tasks) => console.log(tasks, 'tasks')}
-      />
+      <div style={{ display: 'flex' }}>
+        выберите проект:
+        {projects.isProjects.map((el) => (
+          <button
+            onClick={() => {
+              getAllWorks(el.id)
+            }}>
+            {el.project_name}
+          </button>
+        ))}
+        <button
+          onClick={() => {
+            console.log(workArr)
+          }}>
+          afsfsa
+        </button>
+      </div>
+
+      {workArr.length === 0 ? (
+        <div>0</div>
+      ) : (
+        <FrappeGantt
+          tasks={workArr}
+          onClick={(task) => console.log(task, 'click')}
+          onDateChange={(task, start, end) =>
+            console.log(task, start, end, 'date')
+          }
+          onProgressChange={(task, progress) =>
+            console.log(task, progress, 'progress')
+          }
+          onTasksChange={(tasks) => console.log(tasks, 'tasks')}
+        />
+      )}
     </div>
   )
-}
+})
 
 export default Calendar
