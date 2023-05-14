@@ -2,17 +2,32 @@ import './progress-form.scss'
 
 import ButtonMain from '../button/ButtonMain'
 
+import { createWorkAtt } from '../../http/workAtt-api'
+
 import React, { useState } from 'react'
 import CurrencyInput from 'react-currency-input-field'
 
-const ProgressForm = ({ data, setData }) => {
+const ProgressForm = ({ id }) => {
   const [dateStart, setDateStart] = useState('')
   const [dateEnd, setDateEnd] = useState('')
   const [price, setPrice] = useState(0)
   const [description, setDescription] = useState('')
 
+  const addWorkAtt = (workAtt) => {
+    createWorkAtt(workAtt).then((data) => data)
+  }
+
   return (
     <form className="work__form">
+      <div className="description">
+        Название
+        <input
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          maxLength={700}
+          required
+        />
+      </div>
       <div className="date">
         <span>Продолжительность выполнения, дней</span>
         <div className="date__input">
@@ -31,37 +46,32 @@ const ProgressForm = ({ data, setData }) => {
         </div>
       </div>
       <div className="price">
-        Потрачено средств
+        Цена
         <CurrencyInput
           onValueChange={(value) => setPrice(value)}
           prefix="₽ "
-          groupSeparator="  "
-          decimalSeparator=","
+          groupSeparator=" "
+          decimalSeparator="."
           fixedDecimalLength={2}
           maxLength={12}
           step={1}
         />
       </div>
-      <div className="description">
-        Описание работ
-        <textarea
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          maxLength={700}
-          required
-        />
-      </div>
+
       <ButtonMain
         styleComponent="default"
         text={'Добавить'}
         onClick={(e) => {
           e.preventDefault()
-          setData({
-            dateStart: dateStart,
-            dateEnd: dateEnd,
-            price: price,
-            description: description,
+
+          addWorkAtt({
+            date_start: dateStart,
+            date_end: dateEnd,
+            price: +price,
+            work_name: description,
+            workId: id,
           })
+          window.location.reload()
         }}
       />
     </form>
