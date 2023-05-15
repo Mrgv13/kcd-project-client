@@ -23,39 +23,43 @@ const CardsList = observer(() => {
   const { projects } = useContext(Context)
 
   const delProject = (id) => {
-    deleteProject(id).then((data) => {
-      window.location.reload()
-    })
+    deleteProject(id).then((data) => data)
   }
 
   return (
     <>
       <div className="project">
         <div className="text">ВАШИ РАБОТЫ</div>
-        <ButtonMain
-          text={'Создать проект'}
-          styleComponent={'default'}
-          onClick={() => setActiveModal(true)}
-        />
+        <div className="addButton">
+          <ButtonMain
+            text={'Создать проект'}
+            styleComponent={'default'}
+            onClick={() => setActiveModal(true)}
+          />
+        </div>
+
         <div className="project__recent">
           {projects.isProjects.map((el) => (
-            <>
+            <div>
+              <div
+                onClick={() => {
+                  delProject(el.id)
+                  window.location.reload()
+                }}
+                style={{
+                  position: 'absolute',
+                  marginLeft: '350px',
+                  cursor: 'pointer',
+                }}>
+                <Trash />
+              </div>
               <ItemCard
                 id={el.id}
                 key={el.id}
                 worksName={el.project_name}
                 worksAttributes={el.works}
               />
-              <div
-                onClick={() => delProject(el.id)}
-                style={{
-                  position: 'fixed',
-                  marginLeft: '350px',
-                  cursor: 'pointer',
-                }}>
-                <Trash />
-              </div>
-            </>
+            </div>
           ))}
         </div>
       </div>

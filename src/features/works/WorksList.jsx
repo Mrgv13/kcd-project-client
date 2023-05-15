@@ -10,19 +10,28 @@ import { createWork, deleteWork } from '../../common/http/work-aip'
 
 import ButtonMain from '../../common/components/button/ButtonMain'
 
+import { WORKS_ROUTE } from '../../common/routes/consts/projectRoutes'
+
 import React, { useContext, useEffect, useState } from 'react'
 
 import { observer } from 'mobx-react'
+
 import CurrencyInput from 'react-currency-input-field'
+import { useNavigate, useParams } from 'react-router-dom'
 
 const WorksList = observer(() => {
   const { projects, user, works, workAttr } = useContext(Context)
   const [modalActiveAddWork, setModalActiveAddWork] = useState(false)
   const [dateStart, setDateStart] = useState('2023-01-01')
   const [dateEnd, setDateEnd] = useState('2023-01-02')
-  const [projectId, setProjectId] = useState('2023-01-02')
+  const [projectId, setProjectId] = useState(null)
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState(0)
+  const navigate = useNavigate()
+  const params = useParams()
+  const [arr, setArr] = useState([
+    { works_attributes_status: { percent_complited: 0 } },
+  ])
 
   useEffect(() => {
     void projects.getProjectsList(user.user.id)
@@ -30,7 +39,7 @@ const WorksList = observer(() => {
     return () => projects.resetStore()
   }, [])
 
-  const getAllWorks = (projectId) => {
+  const getAllWorks = (projectId = params.id) => {
     void works.resetStore()
 
     void works.getProjectsList(projectId)
@@ -49,18 +58,30 @@ const WorksList = observer(() => {
     <>
       <div className="project">
         <div style={{ display: 'flex' }}>
-          выберите проект:
-          {projects.isProjects.map((el) => (
-            <button onClick={() => getAllWorks(el.id)}>
-              {el.project_name}
-            </button>
-          ))}
+          <div className="project__name">
+            <span>Выберите проект:</span>
+            {projects.isProjects.map((el) => (
+              <ButtonMain
+                styleComponent={`light ${params.id == el.id && 'activeb'}`}
+                text={el.project_name}
+                onClick={() => {
+                  getAllWorks(el.id)
+                  setProjectId(el.id)
+                  navigate(WORKS_ROUTE + `/${el.id}`)
+                }}></ButtonMain>
+            ))}
+          </div>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'row' }}>
+          <div className="text">Работы</div>
+
+          <ButtonMain
+            text={'Создать работу'}
+            styleComponent="default"
+            onClick={() => setModalActiveAddWork(true)}
+          />
         </div>
 
-        <div className="text">Работы</div>
-        <button onClick={() => setModalActiveAddWork(true)}>
-          Создать работу
-        </button>
         <div className="project__recent">
           {works.isWorks.map((work) => (
             <>
@@ -95,16 +116,7 @@ const WorksList = observer(() => {
           ))}
         </div>
       </div>
-      {/*<Modal active={modalActive} setActive={setModalActive}>*/}
-      {/*  {!works.loadingWork ? (*/}
-      {/*    <WorkCard*/}
-      {/*      name={works.isWork.work_name}*/}
-      {/*      worksAttributes={works.isWork.works_attributes}*/}
-      {/*    />*/}
-      {/*  ) : (*/}
-      {/*    <div>LOADING</div>*/}
-      {/*  )}*/}
-      {/*</Modal>*/}
+
       <Modal active={modalActiveAddWork} setActive={setModalActiveAddWork}>
         <div className="modal__block">
           <div className="name__block">
@@ -115,14 +127,6 @@ const WorksList = observer(() => {
                   setModalActiveAddWork(false)
                 }}
               />
-            </div>
-            <div style={{ display: 'flex' }}>
-              выберите проект:
-              {projects.isProjects.map((el) => (
-                <button key={el.id} onClick={() => setProjectId(el.id)}>
-                  {el.project_name}
-                </button>
-              ))}
             </div>
           </div>
           <form className="work__form">
@@ -159,7 +163,6 @@ const WorksList = observer(() => {
                 prefix="₽ "
                 groupSeparator="  "
                 decimalSeparator="."
-                fixedDecimalLength={2}
                 maxLength={12}
                 step={1}
               />

@@ -33,6 +33,7 @@ const ProgressWork = observer(() => {
   const [dateEnd, setDateEnd] = useState('')
   const [price, setPrice] = useState(0)
   const [procent, setProcent] = useState(0)
+
   useEffect(() => {
     setName(workAtt.work_name)
     setDateStart(workAtt.date_start)
@@ -163,7 +164,9 @@ const ProgressWork = observer(() => {
               onChange={(e) => setProcent(+e.target.value)}
             />
           </div>
-          <button
+          <ButtonMain
+            styleComponent={'default'}
+            text={'Обновить'}
             onClick={() => {
               updateWork(workAtt.id, {
                 work_name: name,
@@ -172,16 +175,7 @@ const ProgressWork = observer(() => {
                 price: price,
                 percent_complited: procent,
               })
-            }}>
-            update
-          </button>
-          {/*<div className="progress-bar">*/}
-          {/*  <ProgressBar*/}
-          {/*    completed={workStatus.percent_complited || 0}*/}
-          {/*    bgcolor={'#7BD079'}*/}
-          {/*    textColor={workStatus.percent_complited < 36 && 'black'}*/}
-          {/*  />*/}
-          {/*</div>*/}
+            }}></ButtonMain>
         </div>
       </>
 

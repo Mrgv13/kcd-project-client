@@ -10,7 +10,7 @@ import Documents from '../../features/documents/Documents'
 
 export const projectRoutes = [
   {
-    path: WORKS_ROUTE,
+    path: WORKS_ROUTE + '/:id',
     Component: WorksList,
     name: 'Работы',
   },

@@ -52,7 +52,6 @@ const ProgressForm = ({ id }) => {
           prefix="₽ "
           groupSeparator=" "
           decimalSeparator="."
-          fixedDecimalLength={2}
           maxLength={12}
           step={1}
         />

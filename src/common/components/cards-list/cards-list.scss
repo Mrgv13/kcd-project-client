@@ -6,13 +6,25 @@
   font-size: 36px;
   padding-top: 75px;
 
+  span {
+    padding-left: 50px;
+  }
+
+
+  .project__name {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+  }
+
   .text {
     height: 100px;
-    width: 100vh;
-    padding-left: 50px;
-    display: grid;
-    align-items: center;
-    cursor: default;
+    padding: 0 16px 0 50px;
+
+  }
+
+  .addButton {
+    margin: 0 26px 26px 26px;
   }
 
   .project__recent {

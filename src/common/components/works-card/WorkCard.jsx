@@ -45,31 +45,8 @@ const WorkCard = observer(({ name = '', worksAttributes = [] }) => {
             </div>
 
             <div className="date">{`${el.date_start} ${el.date_end}`}</div>
-
-            {/*<div className="works__include">*/}
-            {/*  {el.works_attributes.length !== 0 &&*/}
-            {/*    el.works_attributes.map((e) => (*/}
-            {/*      <div key={e.id} className="work__include__item">*/}
-            {/*        <div className="name">{e.work_name}</div>*/}
-            {/*        <div*/}
-            {/*          className={*/}
-            {/*            e.works_attributes_status.complited*/}
-            {/*              ? 'green oval'*/}
-            {/*              : 'red oval'*/}
-            {/*          }>*/}
-            {/*          {e.works_attributes_status.text}*/}
-            {/*        </div>*/}
-            {/*      </div>*/}
-            {/*    ))}*/}
-            {/*</div>*/}
           </div>
         ))}
-      </div>
-      <div>
-        <input />
-        <input />
-        <input />
-        <input />
       </div>
     </div>
   )

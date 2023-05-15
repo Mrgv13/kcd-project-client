@@ -16,17 +16,15 @@ export const Context = createContext(null)
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <Context.Provider
-        value={{
-          user: new UserStore(),
-          projects: new ProjectStore(),
-          works: new WorksStore(),
-          workAttr: new WorksAttrStore(),
-        }}>
-        <App />
-      </Context.Provider>
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <Context.Provider
+      value={{
+        user: new UserStore(),
+        projects: new ProjectStore(),
+        works: new WorksStore(),
+        workAttr: new WorksAttrStore(),
+      }}>
+      <App />
+    </Context.Provider>
+  </Provider>,
 )

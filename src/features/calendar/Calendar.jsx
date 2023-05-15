@@ -1,5 +1,7 @@
 import { Context } from '../../index'
 
+import ButtonMain from '../../common/components/button/ButtonMain'
+
 import { FrappeGantt } from 'frappe-gantt-react'
 
 import './calendar.scss'
@@ -41,27 +43,19 @@ const Calendar = observer(() => {
 
   return (
     <div className="calendar__block">
-      <div style={{ display: 'flex' }}>
-        выберите проект:
+      <div className={'project'}>
+        <span>Выберите проект:</span>
         {projects.isProjects.map((el) => (
-          <button
+          <ButtonMain
+            text={el.project_name}
+            styleComponent={'light'}
             onClick={() => {
               getAllWorks(el.id)
-            }}>
-            {el.project_name}
-          </button>
+            }}></ButtonMain>
         ))}
-        <button
-          onClick={() => {
-            console.log(workArr)
-          }}>
-          afsfsa
-        </button>
       </div>
 
-      {workArr.length === 0 ? (
-        <div>0</div>
-      ) : (
+      {!(workArr.length === 0) && (
         <FrappeGantt
           tasks={workArr}
           onClick={(task) => console.log(task, 'click')}

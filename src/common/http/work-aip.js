@@ -19,3 +19,8 @@ export const deleteWork = async (id) => {
   const data = await $authHost.delete(`api-works/?id=${id}`)
   return data
 }
+
+export const getCalcPercent = async (id) => {
+  const data = await $authHost.get(`api-works/percent/${id}`)
+  return data
+}
