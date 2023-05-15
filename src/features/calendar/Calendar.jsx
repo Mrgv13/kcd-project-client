@@ -12,8 +12,10 @@ import React, { useContext, useEffect, useState } from 'react'
 
 const Calendar = observer(() => {
   const { projects, user, works, workAttr } = useContext(Context)
-  const arr = []
+  const [activeArray, setActiveArray] = useState([])
+
   const [workArr, setWorkArr] = useState([])
+  const arr = []
 
   useEffect(() => {
     void projects.getProjectsList(user.user.id)
@@ -28,29 +30,34 @@ const Calendar = observer(() => {
   }
 
   useEffect(() => {
-    works.isWorks.forEach(
-      (el) =>
-        arr.push({
-          id: el.id.toString(),
-          name: el.work_name,
-          start: el.date_start,
-          end: el.date_end,
-          progress: el.works_status.percent_complited,
-        }),
-      setWorkArr(arr),
-    )
+    works.isWorks.forEach((el, index) => {
+      arr.push({
+        id: el.id.toString(),
+        name: el.work_name,
+        start: el.date_start,
+        end: el.date_end,
+        progress: el.works_status.percent_complited,
+      })
+      setWorkArr(arr)
+    })
   }, [works.isWorks])
+
+  function toggle(id) {
+    setActiveArray([id])
+  }
 
   return (
     <div className="calendar__block">
       <div className={'project'}>
         <span>Выберите проект:</span>
-        {projects.isProjects.map((el) => (
+        {projects.isProjects.map((el, index) => (
           <ButtonMain
+            key={el.id}
             text={el.project_name}
-            styleComponent={'light'}
+            styleComponent={`light ${activeArray.includes(el.id) && 'activeb'}`}
             onClick={() => {
               getAllWorks(el.id)
+              toggle(el.id)
             }}></ButtonMain>
         ))}
       </div>
