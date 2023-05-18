@@ -2,9 +2,9 @@ import './button.scss'
 
 import React from 'react'
 
-const ButtonMain = ({ text, onClick, styleComponent }) => {
+const ButtonMain = ({ key = 1, text, onClick, styleComponent }) => {
   return (
-    <button className={styleComponent || ''} onClick={onClick}>
+    <button key={key} className={styleComponent || ''} onClick={onClick}>
       {text}
     </button>
   )

@@ -1,6 +1,4 @@
-import { brigadesRoutes } from '../../../common/routes/brigadesRoutes'
 import { projectRoutes } from '../../../common/routes/projectRoutes'
-import { BRIGADES_PAGE } from '../../../common/routes/consts/brigadesRoutes'
 import {
   MAIN_PAGE,
   SETTINGS_PAGE,
@@ -49,17 +47,17 @@ const NavBar = observer(() => {
         ) : (
           <></>
         )}
-        {user.isAuth ? (
-          <ButtonMain
-            text={'БРИГАДЫ'}
-            onClick={() => {
-              dispatch(changeRoutes(brigadesRoutes))
-              navigate(BRIGADES_PAGE)
-            }}
-          />
-        ) : (
-          <></>
-        )}
+        {/*{user.isAuth ? (*/}
+        {/*  <ButtonMain*/}
+        {/*    text={'БРИГАДЫ'}*/}
+        {/*    onClick={() => {*/}
+        {/*      dispatch(changeRoutes(brigadesRoutes))*/}
+        {/*      navigate(BRIGADES_PAGE)*/}
+        {/*    }}*/}
+        {/*  />*/}
+        {/*) : (*/}
+        {/*  <></>*/}
+        {/*)}*/}
       </div>
       <div className="settings">
         {user.isAuth ? (

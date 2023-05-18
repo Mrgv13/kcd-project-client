@@ -126,13 +126,6 @@ const ProgressWork = observer(() => {
                 setModalActive(true)
               }}
             />
-            <ButtonMain
-              styleComponent="default"
-              text={'Редактировать'}
-              onClick={() => {
-                setModalActive(true)
-              }}
-            />
           </div>
         </div>
         <div className="block2">

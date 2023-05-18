@@ -62,6 +62,7 @@ const WorksList = observer(() => {
             <span>Выберите проект:</span>
             {projects.isProjects.map((el) => (
               <ButtonMain
+                key={el.id}
                 styleComponent={`light ${params.id == el.id && 'activeb'}`}
                 text={el.project_name}
                 onClick={() => {
