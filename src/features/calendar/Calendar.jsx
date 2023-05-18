@@ -16,6 +16,7 @@ const Calendar = observer(() => {
 
   const [workArr, setWorkArr] = useState([])
   const arr = []
+  const nowDate = new Date()
 
   useEffect(() => {
     void projects.getProjectsList(user.user.id)
@@ -25,18 +26,51 @@ const Calendar = observer(() => {
 
   const getAllWorks = (projectId) => {
     void works.resetStore()
-
+    console.log(
+      `${nowDate.getFullYear()}.${nowDate.getMonth() + 1}.${
+        nowDate.getDay() + 14
+      }`,
+    )
     void works.getProjectsList(projectId)
+  }
+
+  const getColor = (dateStart, dateEnd) => {
+    const data = `${nowDate.getFullYear()}.${nowDate.getMonth() + 1}.${
+      nowDate.getDay() + 14
+    }`
+    if (
+      Date.parse(dateStart) > Date.parse(data) &&
+      Date.parse(dateEnd) > Date.parse(data)
+    ) {
+      return 'colorBlue'
+    }
+    if (
+      Date.parse(dateStart) + (Date.parse(dateEnd) - Date.parse(dateStart)) >=
+        Date.parse(data) &&
+      Date.parse(dateEnd) >= Date.parse(data)
+    ) {
+      return 'colorGreen'
+    }
+    if (
+      Date.parse(dateStart) + (Date.parse(dateEnd) - Date.parse(dateStart)) <
+        Date.parse(data) &&
+      Date.parse(dateEnd) < Date.parse(data)
+    ) {
+      return 'colorRed'
+    }
   }
 
   useEffect(() => {
     works.isWorks.forEach((el, index) => {
+      const color = getColor(el.date_start, el.date_end)
+
       arr.push({
         id: el.id.toString(),
         name: el.work_name,
         start: el.date_start,
         end: el.date_end,
         progress: el.works_status.percent_complited,
+        custom_class: color,
       })
       setWorkArr(arr)
     })

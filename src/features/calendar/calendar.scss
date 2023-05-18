@@ -13,4 +13,28 @@
     gap: 6px;
     margin-bottom: 25px;
   }
+
+  .colorRed .bar {
+    fill: #FF8E76 !important;
+  }
+
+  .colorRed .bar-progress {
+    fill: #D95B43 !important;
+  }
+
+  .colorGreen .bar {
+    fill: #87e13c !important;
+  }
+
+  .colorGreen .bar-progress {
+    fill: #448c03 !important;
+  }
+
+  .colorBlue .bar {
+    fill: #4f8ada !important;
+  }
+
+  .colorBlue .bar-progress {
+    fill: #12458a !important;
+  }
 }
