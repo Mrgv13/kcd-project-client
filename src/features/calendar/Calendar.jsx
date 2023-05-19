@@ -13,9 +13,11 @@ import React, { useContext, useEffect, useState } from 'react'
 const Calendar = observer(() => {
   const { projects, user, works, workAttr } = useContext(Context)
   const [activeArray, setActiveArray] = useState([])
+  const [activeArray2, setActiveArray2] = useState([])
 
   const [workArr, setWorkArr] = useState([])
   const arr = []
+  const arr2 = []
   const nowDate = new Date()
 
   useEffect(() => {
@@ -26,12 +28,15 @@ const Calendar = observer(() => {
 
   const getAllWorks = (projectId) => {
     void works.resetStore()
-    console.log(
-      `${nowDate.getFullYear()}.${nowDate.getMonth() + 1}.${
-        nowDate.getDay() + 14
-      }`,
-    )
+    void workAttr.resetStore()
+
     void works.getProjectsList(projectId)
+  }
+
+  const getAllWorkAttr = (workId) => {
+    void workAttr.resetStore()
+
+    void workAttr.getProjectsList(workId)
   }
 
   const getColor = (dateStart, dateEnd) => {
@@ -76,13 +81,33 @@ const Calendar = observer(() => {
     })
   }, [works.isWorks])
 
+  useEffect(() => {
+    workAttr.isWorksAttr.forEach((el, index) => {
+      const color = getColor(el.date_start, el.date_end)
+
+      arr2.push({
+        id: el.id.toString(),
+        name: el.work_name,
+        start: el.date_start,
+        end: el.date_end,
+        progress: el.works_attributes_status.percent_complited,
+        custom_class: color,
+      })
+      setWorkArr(arr2)
+    })
+  }, [workAttr.isWorksAttr])
+
   function toggle(id) {
     setActiveArray([id])
   }
 
+  function toggle2(id) {
+    setActiveArray2([id])
+  }
+
   return (
     <div className="calendar__block">
-      <div className={'project'}>
+      <div className="project">
         <span>Выберите проект:</span>
         {projects.isProjects.map((el, index) => (
           <ButtonMain
@@ -95,7 +120,21 @@ const Calendar = observer(() => {
             }}></ButtonMain>
         ))}
       </div>
-
+      <div className="project">
+        <span>Выберите работу:</span>
+        {works.isWorks.map((el, index) => (
+          <ButtonMain
+            key={el.id}
+            text={el.work_name}
+            styleComponent={`light ${
+              activeArray2.includes(el.id) && 'activeb'
+            }`}
+            onClick={() => {
+              getAllWorkAttr(el.id)
+              toggle2(el.id)
+            }}></ButtonMain>
+        ))}
+      </div>
       {!(workArr.length === 0) && (
         <FrappeGantt
           tasks={workArr}
