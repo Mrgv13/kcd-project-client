@@ -39,7 +39,9 @@ const Calendar = observer(() => {
     void workAttr.getProjectsList(workId)
   }
 
-  const getColor = (dateStart, dateEnd) => {
+  const getColor = (dateStart, dateEnd, percent_complited) => {
+    if (percent_complited === 100) return 'colorGreen'
+
     const data = `${nowDate.getFullYear()}.${nowDate.getMonth() + 1}.${
       nowDate.getDay() + 14
     }`
@@ -54,7 +56,7 @@ const Calendar = observer(() => {
         Date.parse(data) &&
       Date.parse(dateEnd) >= Date.parse(data)
     ) {
-      return 'colorGreen'
+      return 'colorYellow'
     }
     if (
       Date.parse(dateStart) + (Date.parse(dateEnd) - Date.parse(dateStart)) <
@@ -67,7 +69,11 @@ const Calendar = observer(() => {
 
   useEffect(() => {
     works.isWorks.forEach((el, index) => {
-      const color = getColor(el.date_start, el.date_end)
+      const color = getColor(
+        el.date_start,
+        el.date_end,
+        el.works_status.percent_complited,
+      )
 
       arr.push({
         id: el.id.toString(),
